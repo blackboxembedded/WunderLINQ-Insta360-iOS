@@ -13,7 +13,7 @@ decode performance and fault data.
 
 2. Obtain SDK access from [Insta360](https://www.insta360.com/sdk/home)
 
-3. Create Cartfile per the SDK docs
+3. Create Cartfile per the [Insta360 SDK](https://github.com/Insta360Develop/CameraSDK-iOS) documentation
 
 4. Pull down dependencies
 ```
