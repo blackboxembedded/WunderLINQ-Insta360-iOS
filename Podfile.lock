@@ -1,0 +1,20 @@
+PODS:
+  - ChromaColorPicker (2.0.2)
+  - InAppSettingsKit (3.3.6)
+
+DEPENDENCIES:
+  - ChromaColorPicker (~> 2.0.2)
+  - InAppSettingsKit (~> 3.3.5)
+
+SPEC REPOS:
+  trunk:
+    - ChromaColorPicker
+    - InAppSettingsKit
+
+SPEC CHECKSUMS:
+  ChromaColorPicker: 307585f2dc23d4d72f24cad320c1e08825cb5c09
+  InAppSettingsKit: 37df0b44132380d4c7db6fc7cded92997e29873a
+
+PODFILE CHECKSUM: 2aaff15914ec0cb70c28ed3a94c94bc0a8a11058
+
+COCOAPODS: 1.11.3

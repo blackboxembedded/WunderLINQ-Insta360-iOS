@@ -7,15 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		145FEBE39C8525C0C333FA67 /* Pods_WunderLINQ_Insta360.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9617646E8B76E9C847C2A333 /* Pods_WunderLINQ_Insta360.framework */; };
+		1FA8157F0DEC57B4A64260FC /* Pods_WunderLINQ_Insta360Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F68E6540E0061557317531A8 /* Pods_WunderLINQ_Insta360Tests.framework */; };
+		44249850D386C36C98FFE1D9 /* Pods_WunderLINQ_Insta360_WunderLINQ_Insta360UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4688D48A72ACC7F1FE9BCF77 /* Pods_WunderLINQ_Insta360_WunderLINQ_Insta360UITests.framework */; };
 		7EA435872995967600B6AC4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435862995967600B6AC4E /* AppDelegate.swift */; };
 		7EA435892995967600B6AC4E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435882995967600B6AC4E /* SceneDelegate.swift */; };
-		7EA4358B2995967600B6AC4E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4358A2995967600B6AC4E /* ViewController.swift */; };
 		7EA4358E2995967600B6AC4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4358C2995967600B6AC4E /* Main.storyboard */; };
 		7EA435902995967700B6AC4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4358F2995967700B6AC4E /* Assets.xcassets */; };
 		7EA435932995967700B6AC4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7EA435912995967700B6AC4E /* LaunchScreen.storyboard */; };
 		7EA4359E2995967800B6AC4E /* WunderLINQ_Insta360Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA4359D2995967800B6AC4E /* WunderLINQ_Insta360Tests.swift */; };
 		7EA435A82995967800B6AC4E /* WunderLINQ_Insta360UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435A72995967800B6AC4E /* WunderLINQ_Insta360UITests.swift */; };
 		7EA435AA2995967800B6AC4E /* WunderLINQ_Insta360UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435A92995967800B6AC4E /* WunderLINQ_Insta360UITestsLaunchTests.swift */; };
+		7EA435B829959B6400B6AC4E /* INSCoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA435B729959B6400B6AC4E /* INSCoreMedia.framework */; };
+		7EA435B929959B6400B6AC4E /* INSCoreMedia.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7EA435B729959B6400B6AC4E /* INSCoreMedia.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		7EA435C729959D8D00B6AC4E /* CentralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435BB29959D8800B6AC4E /* CentralManager.swift */; };
+		7EA435C829959D8D00B6AC4E /* CameraListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435BC29959D8900B6AC4E /* CameraListController.swift */; };
+		7EA435C929959D8D00B6AC4E /* CameraError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435BD29959D8900B6AC4E /* CameraError.swift */; };
+		7EA435CA29959D8D00B6AC4E /* CameraTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435BE29959D8900B6AC4E /* CameraTableViewCell.swift */; };
+		7EA435CB29959D8D00B6AC4E /* Peripheral+Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435BF29959D8A00B6AC4E /* Peripheral+Camera.swift */; };
+		7EA435CC29959D8D00B6AC4E /* Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435C029959D8A00B6AC4E /* Atomic.swift */; };
+		7EA435CD29959D8D00B6AC4E /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435C129959D8A00B6AC4E /* PreviewViewController.swift */; };
+		7EA435CE29959D8D00B6AC4E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7EA435C229959D8B00B6AC4E /* Settings.bundle */; };
+		7EA435CF29959D8D00B6AC4E /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435C329959D8B00B6AC4E /* SpinnerViewController.swift */; };
+		7EA435D029959D8D00B6AC4E /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435C429959D8C00B6AC4E /* CameraViewController.swift */; };
+		7EA435D129959D8D00B6AC4E /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435C529959D8C00B6AC4E /* ColorPickerViewController.swift */; };
+		7EA435D229959D8D00B6AC4E /* Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435C629959D8C00B6AC4E /* Peripheral.swift */; };
+		7EA435D72995AA1600B6AC4E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7EA435D52995AA1600B6AC4E /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,11 +52,28 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		7EA435BA29959B6500B6AC4E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				7EA435B929959B6400B6AC4E /* INSCoreMedia.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		27DF95B979746206046D2394 /* Pods-WunderLINQ-Insta360.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ-Insta360.debug.xcconfig"; path = "Target Support Files/Pods-WunderLINQ-Insta360/Pods-WunderLINQ-Insta360.debug.xcconfig"; sourceTree = "<group>"; };
+		461EA45A50CB9EA1C098AF4C /* Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.release.xcconfig"; path = "Target Support Files/Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests/Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.release.xcconfig"; sourceTree = "<group>"; };
+		4688D48A72ACC7F1FE9BCF77 /* Pods_WunderLINQ_Insta360_WunderLINQ_Insta360UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderLINQ_Insta360_WunderLINQ_Insta360UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		52205B8FE3C06B22AB7DC7B9 /* Pods-WunderLINQ-Insta360Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ-Insta360Tests.release.xcconfig"; path = "Target Support Files/Pods-WunderLINQ-Insta360Tests/Pods-WunderLINQ-Insta360Tests.release.xcconfig"; sourceTree = "<group>"; };
 		7EA435832995967600B6AC4E /* WunderLINQ-Insta360.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WunderLINQ-Insta360.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EA435862995967600B6AC4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7EA435882995967600B6AC4E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7EA4358A2995967600B6AC4E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7EA4358D2995967600B6AC4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7EA4358F2995967700B6AC4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7EA435922995967700B6AC4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +83,36 @@
 		7EA435A32995967800B6AC4E /* WunderLINQ-Insta360UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "WunderLINQ-Insta360UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EA435A72995967800B6AC4E /* WunderLINQ_Insta360UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WunderLINQ_Insta360UITests.swift; sourceTree = "<group>"; };
 		7EA435A92995967800B6AC4E /* WunderLINQ_Insta360UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WunderLINQ_Insta360UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7EA435B729959B6400B6AC4E /* INSCoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = INSCoreMedia.framework; path = Carthage/Build/iOS/INSCoreMedia.framework; sourceTree = "<group>"; };
+		7EA435BB29959D8800B6AC4E /* CentralManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CentralManager.swift; sourceTree = "<group>"; };
+		7EA435BC29959D8900B6AC4E /* CameraListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraListController.swift; sourceTree = "<group>"; };
+		7EA435BD29959D8900B6AC4E /* CameraError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraError.swift; sourceTree = "<group>"; };
+		7EA435BE29959D8900B6AC4E /* CameraTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraTableViewCell.swift; sourceTree = "<group>"; };
+		7EA435BF29959D8A00B6AC4E /* Peripheral+Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Peripheral+Camera.swift"; sourceTree = "<group>"; };
+		7EA435C029959D8A00B6AC4E /* Atomic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Atomic.swift; sourceTree = "<group>"; };
+		7EA435C129959D8A00B6AC4E /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
+		7EA435C229959D8B00B6AC4E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		7EA435C329959D8B00B6AC4E /* SpinnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
+		7EA435C429959D8C00B6AC4E /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		7EA435C529959D8C00B6AC4E /* ColorPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorPickerViewController.swift; sourceTree = "<group>"; };
+		7EA435C629959D8C00B6AC4E /* Peripheral.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Peripheral.swift; sourceTree = "<group>"; };
+		7EA435D62995AA1600B6AC4E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7EA435DA2995AA9400B6AC4E /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7EA435DB2995AA9700B6AC4E /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7EA435E52995AB1E00B6AC4E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7EA435E62995AB2000B6AC4E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7EA435E72995AB2100B6AC4E /* el */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = el; path = el.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7EA435E82995AB2300B6AC4E /* hu */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hu; path = hu.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7EA435E92995AB2400B6AC4E /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7EA435EA2995AB2600B6AC4E /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7EA435EB2995AB2800B6AC4E /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7EA435EC2995AB2900B6AC4E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7EA435ED2995AB2B00B6AC4E /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		9617646E8B76E9C847C2A333 /* Pods_WunderLINQ_Insta360.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderLINQ_Insta360.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B92AF781FA5B4683529CDA1E /* Pods-WunderLINQ-Insta360.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ-Insta360.release.xcconfig"; path = "Target Support Files/Pods-WunderLINQ-Insta360/Pods-WunderLINQ-Insta360.release.xcconfig"; sourceTree = "<group>"; };
+		C4E8D0A70C61B18AF1920B8F /* Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.debug.xcconfig"; path = "Target Support Files/Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests/Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E50F1390B825CAC759A3D93A /* Pods-WunderLINQ-Insta360Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ-Insta360Tests.debug.xcconfig"; path = "Target Support Files/Pods-WunderLINQ-Insta360Tests/Pods-WunderLINQ-Insta360Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		F68E6540E0061557317531A8 /* Pods_WunderLINQ_Insta360Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderLINQ_Insta360Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +120,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EA435B829959B6400B6AC4E /* INSCoreMedia.framework in Frameworks */,
+				145FEBE39C8525C0C333FA67 /* Pods_WunderLINQ_Insta360.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +129,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FA8157F0DEC57B4A64260FC /* Pods_WunderLINQ_Insta360Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44249850D386C36C98FFE1D9 /* Pods_WunderLINQ_Insta360_WunderLINQ_Insta360UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +151,8 @@
 				7EA4359C2995967800B6AC4E /* WunderLINQ-Insta360Tests */,
 				7EA435A62995967800B6AC4E /* WunderLINQ-Insta360UITests */,
 				7EA435842995967600B6AC4E /* Products */,
+				7EA435B629959B6400B6AC4E /* Frameworks */,
+				A5DDD8D28034C41DAC6B6D40 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,11 +169,23 @@
 		7EA435852995967600B6AC4E /* WunderLINQ-Insta360 */ = {
 			isa = PBXGroup;
 			children = (
+				7EA435D52995AA1600B6AC4E /* Localizable.strings */,
+				7EA435C029959D8A00B6AC4E /* Atomic.swift */,
+				7EA435BD29959D8900B6AC4E /* CameraError.swift */,
+				7EA435BC29959D8900B6AC4E /* CameraListController.swift */,
+				7EA435BE29959D8900B6AC4E /* CameraTableViewCell.swift */,
+				7EA435C429959D8C00B6AC4E /* CameraViewController.swift */,
+				7EA435BB29959D8800B6AC4E /* CentralManager.swift */,
+				7EA435C529959D8C00B6AC4E /* ColorPickerViewController.swift */,
+				7EA435C629959D8C00B6AC4E /* Peripheral.swift */,
+				7EA435BF29959D8A00B6AC4E /* Peripheral+Camera.swift */,
+				7EA435C129959D8A00B6AC4E /* PreviewViewController.swift */,
+				7EA435C329959D8B00B6AC4E /* SpinnerViewController.swift */,
 				7EA435862995967600B6AC4E /* AppDelegate.swift */,
 				7EA435882995967600B6AC4E /* SceneDelegate.swift */,
-				7EA4358A2995967600B6AC4E /* ViewController.swift */,
-				7EA4358C2995967600B6AC4E /* Main.storyboard */,
+				7EA435C229959D8B00B6AC4E /* Settings.bundle */,
 				7EA4358F2995967700B6AC4E /* Assets.xcassets */,
+				7EA4358C2995967600B6AC4E /* Main.storyboard */,
 				7EA435912995967700B6AC4E /* LaunchScreen.storyboard */,
 				7EA435942995967700B6AC4E /* Info.plist */,
 			);
@@ -127,6 +209,31 @@
 			path = "WunderLINQ-Insta360UITests";
 			sourceTree = "<group>";
 		};
+		7EA435B629959B6400B6AC4E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7EA435B729959B6400B6AC4E /* INSCoreMedia.framework */,
+				9617646E8B76E9C847C2A333 /* Pods_WunderLINQ_Insta360.framework */,
+				4688D48A72ACC7F1FE9BCF77 /* Pods_WunderLINQ_Insta360_WunderLINQ_Insta360UITests.framework */,
+				F68E6540E0061557317531A8 /* Pods_WunderLINQ_Insta360Tests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A5DDD8D28034C41DAC6B6D40 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				27DF95B979746206046D2394 /* Pods-WunderLINQ-Insta360.debug.xcconfig */,
+				B92AF781FA5B4683529CDA1E /* Pods-WunderLINQ-Insta360.release.xcconfig */,
+				C4E8D0A70C61B18AF1920B8F /* Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.debug.xcconfig */,
+				461EA45A50CB9EA1C098AF4C /* Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.release.xcconfig */,
+				E50F1390B825CAC759A3D93A /* Pods-WunderLINQ-Insta360Tests.debug.xcconfig */,
+				52205B8FE3C06B22AB7DC7B9 /* Pods-WunderLINQ-Insta360Tests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,9 +241,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7EA435AD2995967800B6AC4E /* Build configuration list for PBXNativeTarget "WunderLINQ-Insta360" */;
 			buildPhases = (
+				05DBF3D517DD5DA3A953FFA5 /* [CP] Check Pods Manifest.lock */,
 				7EA4357F2995967600B6AC4E /* Sources */,
 				7EA435802995967600B6AC4E /* Frameworks */,
 				7EA435812995967600B6AC4E /* Resources */,
+				7EA435BA29959B6500B6AC4E /* Embed Frameworks */,
+				8EECAB7543C8995E65E89139 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -151,6 +261,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7EA435B02995967800B6AC4E /* Build configuration list for PBXNativeTarget "WunderLINQ-Insta360Tests" */;
 			buildPhases = (
+				255439875CE4D11DF7BA69C9 /* [CP] Check Pods Manifest.lock */,
 				7EA435952995967800B6AC4E /* Sources */,
 				7EA435962995967800B6AC4E /* Frameworks */,
 				7EA435972995967800B6AC4E /* Resources */,
@@ -169,9 +280,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7EA435B32995967800B6AC4E /* Build configuration list for PBXNativeTarget "WunderLINQ-Insta360UITests" */;
 			buildPhases = (
+				30B3D0D54056BD087A86838B /* [CP] Check Pods Manifest.lock */,
 				7EA4359F2995967800B6AC4E /* Sources */,
 				7EA435A02995967800B6AC4E /* Frameworks */,
 				7EA435A12995967800B6AC4E /* Resources */,
+				AADBE93CBF8E60778E26C05F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -213,6 +326,17 @@
 			knownRegions = (
 				en,
 				Base,
+				cs,
+				nl,
+				fr,
+				de,
+				el,
+				hu,
+				ja,
+				pl,
+				sl,
+				es,
+				"es-419",
 			);
 			mainGroup = 7EA4357A2995967600B6AC4E;
 			productRefGroup = 7EA435842995967600B6AC4E /* Products */;
@@ -231,6 +355,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EA435D72995AA1600B6AC4E /* Localizable.strings in Resources */,
+				7EA435CE29959D8D00B6AC4E /* Settings.bundle in Resources */,
 				7EA435932995967700B6AC4E /* LaunchScreen.storyboard in Resources */,
 				7EA435902995967700B6AC4E /* Assets.xcassets in Resources */,
 				7EA4358E2995967600B6AC4E /* Main.storyboard in Resources */,
@@ -253,14 +379,127 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		05DBF3D517DD5DA3A953FFA5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WunderLINQ-Insta360-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		255439875CE4D11DF7BA69C9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WunderLINQ-Insta360Tests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		30B3D0D54056BD087A86838B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8EECAB7543C8995E65E89139 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WunderLINQ-Insta360/Pods-WunderLINQ-Insta360-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WunderLINQ-Insta360/Pods-WunderLINQ-Insta360-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WunderLINQ-Insta360/Pods-WunderLINQ-Insta360-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AADBE93CBF8E60778E26C05F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests/Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests/Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests/Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7EA4357F2995967600B6AC4E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EA4358B2995967600B6AC4E /* ViewController.swift in Sources */,
+				7EA435D129959D8D00B6AC4E /* ColorPickerViewController.swift in Sources */,
+				7EA435D229959D8D00B6AC4E /* Peripheral.swift in Sources */,
+				7EA435CF29959D8D00B6AC4E /* SpinnerViewController.swift in Sources */,
+				7EA435CC29959D8D00B6AC4E /* Atomic.swift in Sources */,
 				7EA435872995967600B6AC4E /* AppDelegate.swift in Sources */,
+				7EA435CD29959D8D00B6AC4E /* PreviewViewController.swift in Sources */,
+				7EA435D029959D8D00B6AC4E /* CameraViewController.swift in Sources */,
+				7EA435CB29959D8D00B6AC4E /* Peripheral+Camera.swift in Sources */,
+				7EA435CA29959D8D00B6AC4E /* CameraTableViewCell.swift in Sources */,
 				7EA435892995967600B6AC4E /* SceneDelegate.swift in Sources */,
+				7EA435C829959D8D00B6AC4E /* CameraListController.swift in Sources */,
+				7EA435C729959D8D00B6AC4E /* CentralManager.swift in Sources */,
+				7EA435C929959D8D00B6AC4E /* CameraError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +552,25 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		7EA435D52995AA1600B6AC4E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7EA435D62995AA1600B6AC4E /* en */,
+				7EA435DA2995AA9400B6AC4E /* cs */,
+				7EA435DB2995AA9700B6AC4E /* nl */,
+				7EA435E52995AB1E00B6AC4E /* fr */,
+				7EA435E62995AB2000B6AC4E /* de */,
+				7EA435E72995AB2100B6AC4E /* el */,
+				7EA435E82995AB2300B6AC4E /* hu */,
+				7EA435E92995AB2400B6AC4E /* ja */,
+				7EA435EA2995AB2600B6AC4E /* pl */,
+				7EA435EB2995AB2800B6AC4E /* sl */,
+				7EA435EC2995AB2900B6AC4E /* es */,
+				7EA435ED2995AB2B00B6AC4E /* es-419 */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -320,6 +578,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -380,6 +639,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -432,12 +692,17 @@
 		};
 		7EA435AE2995967800B6AC4E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27DF95B979746206046D2394 /* Pods-WunderLINQ-Insta360.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3J48UMN5W2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WunderLINQ-Insta360/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -445,6 +710,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -460,12 +726,17 @@
 		};
 		7EA435AF2995967800B6AC4E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B92AF781FA5B4683529CDA1E /* Pods-WunderLINQ-Insta360.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3J48UMN5W2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "WunderLINQ-Insta360/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -473,6 +744,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -488,6 +760,7 @@
 		};
 		7EA435B12995967800B6AC4E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E50F1390B825CAC759A3D93A /* Pods-WunderLINQ-Insta360Tests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -508,6 +781,7 @@
 		};
 		7EA435B22995967800B6AC4E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 52205B8FE3C06B22AB7DC7B9 /* Pods-WunderLINQ-Insta360Tests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -528,6 +802,7 @@
 		};
 		7EA435B42995967800B6AC4E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4E8D0A70C61B18AF1920B8F /* Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -546,6 +821,7 @@
 		};
 		7EA435B52995967800B6AC4E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 461EA45A50CB9EA1C098AF4C /* Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

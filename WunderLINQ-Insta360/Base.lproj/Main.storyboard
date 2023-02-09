@@ -1,24 +1,217 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="lEf-VD-RBq">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Camera List Controller-->
+        <scene sceneID="d5R-dc-pig">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <tableViewController id="lzU-RV-5Xf" customClass="CameraListController" customModule="WunderLINQ_GoPro" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="100" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="4QJ-Tq-vRc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CameraListViewCell" id="V1O-Gb-yyi" customClass="CameraTableViewCell" customModule="WunderLINQ_GoPro" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="393" height="65"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V1O-Gb-yyi" id="FTc-qt-oay">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="65"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4aD-K6-ZX5">
+                                            <rect key="frame" x="0.0" y="0.0" width="305" height="65"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hZC-vE-TvD">
+                                            <rect key="frame" x="321" y="7" width="56" height="51.333333333333329"/>
+                                            <color key="tintColor" name="imageTint"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="56" id="Ihn-Tz-19S"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="hZC-vE-TvD" firstAttribute="leading" secondItem="4aD-K6-ZX5" secondAttribute="trailing" constant="16" id="4Zn-3o-7Mk"/>
+                                        <constraint firstItem="hZC-vE-TvD" firstAttribute="top" secondItem="FTc-qt-oay" secondAttribute="top" constant="5" id="83l-Gj-fTh"/>
+                                        <constraint firstAttribute="trailing" secondItem="hZC-vE-TvD" secondAttribute="trailing" constant="16" id="CNH-2F-4J1"/>
+                                        <constraint firstItem="4aD-K6-ZX5" firstAttribute="leading" secondItem="FTc-qt-oay" secondAttribute="leading" id="LpB-gg-VT6"/>
+                                        <constraint firstAttribute="bottom" secondItem="hZC-vE-TvD" secondAttribute="bottom" constant="5" id="Q3N-cY-MZq"/>
+                                        <constraint firstItem="4aD-K6-ZX5" firstAttribute="top" secondItem="FTc-qt-oay" secondAttribute="top" id="Xz2-AI-rNd"/>
+                                        <constraint firstAttribute="bottom" secondItem="4aD-K6-ZX5" secondAttribute="bottom" id="b9g-Ln-L4N"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="chevronImage" destination="hZC-vE-TvD" id="KD0-pE-PNo"/>
+                                    <outlet property="nameLabel" destination="4aD-K6-ZX5" id="8f9-o9-NCM"/>
+                                    <outlet property="uiView" destination="FTc-qt-oay" id="HPm-Bb-KCm"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="lzU-RV-5Xf" id="1yP-9L-9Hl"/>
+                            <outlet property="delegate" destination="lzU-RV-5Xf" id="ReL-hf-xys"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="z6t-uJ-Kmd"/>
+                    <connections>
+                        <outlet property="cameraListTableView" destination="4QJ-Tq-vRc" id="rHy-1I-bfx"/>
+                        <outlet property="tableView" destination="4QJ-Tq-vRc" id="xdV-rK-Qip"/>
+                        <segue destination="cAf-BU-IIZ" kind="show" identifier="cameraListToCameraView" id="VRz-tg-pu2"/>
+                        <segue destination="8zk-r4-3vb" kind="show" id="rAD-1Q-qM6"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QQ0-7R-Ebx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-321" y="-283"/>
+        </scene>
+        <!--Camera View Controller-->
+        <scene sceneID="6O3-hS-hIO">
+            <objects>
+                <viewController id="cAf-BU-IIZ" customClass="CameraViewController" customModule="WunderLINQ_GoPro" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jR5-jn-RFI">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="16v-Dj-91C">
+                                <rect key="frame" x="0.0" y="104" width="393" height="200"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="nVB-Yw-Q71"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="hy8-i1-tKh" appends="YES" id="7Go-V9-pu3"/>
+                                </connections>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ghZ-tg-nuG">
+                                <rect key="frame" x="0.0" y="752" width="393" height="50"/>
+                                <color key="backgroundColor" name="AccentColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="F5Q-Fc-0g2"/>
+                                </constraints>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="zYe-cx-3HM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="16v-Dj-91C" firstAttribute="top" secondItem="zYe-cx-3HM" secondAttribute="top" constant="1" id="9Z9-Pn-Tcy"/>
+                            <constraint firstItem="zYe-cx-3HM" firstAttribute="bottom" secondItem="ghZ-tg-nuG" secondAttribute="bottom" constant="16" id="Abz-gn-fg7"/>
+                            <constraint firstItem="16v-Dj-91C" firstAttribute="trailing" secondItem="zYe-cx-3HM" secondAttribute="trailing" id="Duj-5p-eYd"/>
+                            <constraint firstItem="16v-Dj-91C" firstAttribute="leading" secondItem="zYe-cx-3HM" secondAttribute="leading" id="FOJ-Fv-KFU"/>
+                            <constraint firstItem="ghZ-tg-nuG" firstAttribute="trailing" secondItem="zYe-cx-3HM" secondAttribute="trailing" id="N2o-eQ-H36"/>
+                            <constraint firstAttribute="trailing" secondItem="16v-Dj-91C" secondAttribute="trailing" id="YWe-jQ-uUi"/>
+                            <constraint firstItem="ghZ-tg-nuG" firstAttribute="leading" secondItem="zYe-cx-3HM" secondAttribute="leading" id="oki-5f-b2s"/>
+                            <constraint firstItem="16v-Dj-91C" firstAttribute="leading" secondItem="jR5-jn-RFI" secondAttribute="leading" id="xw5-za-XIe"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ToC-qp-tHL"/>
+                    <connections>
+                        <outlet property="modeImageView" destination="16v-Dj-91C" id="aHY-aa-ltC"/>
+                        <outlet property="recordButton" destination="ghZ-tg-nuG" id="zan-Zn-i0i"/>
+                        <segue destination="lGG-Kp-ZKe" kind="presentation" identifier="cameraViewToPreviewView" id="E9x-Kh-rol"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fCP-VC-eJM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="hy8-i1-tKh">
+                    <connections>
+                        <action selector="didTapImageView:" destination="cAf-BU-IIZ" id="EVW-Ag-Zfu"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="409.92366412213738" y="-283.0985915492958"/>
+        </scene>
+        <!--Preview View Controller-->
+        <scene sceneID="w5b-Zf-9cW">
+            <objects>
+                <viewController id="lGG-Kp-ZKe" customClass="PreviewViewController" customModule="WunderLINQ_GoPro" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="deI-5r-qcy">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oNA-ls-Jeb">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="J1P-zm-TmJ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="oNA-ls-Jeb" secondAttribute="bottom" id="02f-i3-Y6C"/>
+                            <constraint firstItem="oNA-ls-Jeb" firstAttribute="top" secondItem="deI-5r-qcy" secondAttribute="top" id="4K0-Wg-ua4"/>
+                            <constraint firstItem="oNA-ls-Jeb" firstAttribute="trailing" secondItem="J1P-zm-TmJ" secondAttribute="trailing" id="LLW-Lk-ipe"/>
+                            <constraint firstItem="oNA-ls-Jeb" firstAttribute="leading" secondItem="J1P-zm-TmJ" secondAttribute="leading" id="rIX-Id-Jdm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="A3V-Ie-h88"/>
+                    <connections>
+                        <outlet property="previewView" destination="oNA-ls-Jeb" id="nu5-ID-aZC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ug8-Zi-kUR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1156" y="-283"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7Qe-tu-oqt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lEf-VD-RBq" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VCi-bw-Mc6">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" name="imageTint"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="lzU-RV-5Xf" kind="relationship" relationship="rootViewController" id="nkq-a7-yRg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EQs-1I-1zk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1054.1984732824426" y="-283.0985915492958"/>
+        </scene>
+        <!--Color Picker View Controller-->
+        <scene sceneID="55C-H4-sn7">
+            <objects>
+                <viewController storyboardIdentifier="ColorPickerViewController" id="8zk-r4-3vb" customClass="ColorPickerViewController" customModule="WunderLINQ_GoPro" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NKw-Pa-aXf">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="dBF-pn-n36"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Zwk-qg-yw0"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AGz-1b-X1f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1054" y="392"/>
         </scene>
     </scenes>
+    <color key="tintColor" name="imageTint"/>
+    <resources>
+        <image name="chevron.right" catalog="system" width="97" height="128"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="imageTint">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
