@@ -26,9 +26,6 @@ struct WiFiSettings {
 struct CameraStatus {
     var busy: Bool
     var mode: UInt8
-    var wifiEnabled: Bool
-    var previewAvailable: Bool
-    var openGoPro: Bool
 }
 
 struct CommandResponse {
@@ -138,7 +135,7 @@ extension Peripheral {
                     cmode = 0x00
                 }
             }
-            finishWithResult(.success(CameraStatus(busy: (data[5] == 0x01), mode: cmode, wifiEnabled: (data[8] == 0x01), previewAvailable: (data[11] == 0x01), openGoPro: (data[12] == 0x60))))
+            finishWithResult(.success(CameraStatus(busy: (data[5] == 0x01), mode: cmode)))
             return
         } completion: { [weak self] error in
             // Check that we successfully enable the notification for the response before writing to the characteristic

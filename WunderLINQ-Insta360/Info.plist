@@ -8,7 +8,7 @@
             <key>CFBundleTypeRole</key>
             <string>Editor</string>
             <key>CFBundleURLName</key>
-            <string>com.blackboxembedded.WunderLINQ-GoPro</string>
+            <string>com.blackboxembedded.WunderLINQ-Insta360</string>
             <key>CFBundleURLSchemes</key>
             <array>
                 <string>wunderlinqgp</string>
@@ -16,7 +16,7 @@
         </dict>
     </array>
     <key>NSBluetoothAlwaysUsageDescription</key>
-    <string>This will allow &quot;$(PRODUCT_NAME)&quot; to find and connect to GoPro Cameras</string>
+    <string>This will allow &quot;$(PRODUCT_NAME)&quot; to find and connect to Insta360 Cameras</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
