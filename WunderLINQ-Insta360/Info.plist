@@ -11,7 +11,7 @@
             <string>com.blackboxembedded.WunderLINQ-Insta360</string>
             <key>CFBundleURLSchemes</key>
             <array>
-                <string>wunderlinqgp</string>
+                <string>wunderlinqi360</string>
             </array>
         </dict>
     </array>

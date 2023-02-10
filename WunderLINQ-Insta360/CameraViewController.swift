@@ -24,12 +24,11 @@ class CameraViewController: UIViewController {
     
     var peripheral: Peripheral?
     var cameraStatus: CameraStatus?
-    var wifiSettings: WiFiSettings?
     
     var lastCommand: Data?
    
     @IBAction func didTapImageView(_ sender: UITapGestureRecognizer) {
-        enableWifi()
+        //Open Preview
     }
     
     override func viewDidLoad() {
@@ -64,7 +63,8 @@ class CameraViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getCameraStatus()
+        //getCameraWifi()
+        joinWiFi(with: self.peripheral!.name + ".OSC", password: "88888888")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -156,56 +156,47 @@ class CameraViewController: UIViewController {
         }
     }
     
-    func enableWifi() {
-        NSLog("enableWifi()")
-        sendCameraCommand(command: Data([0x17, 0x01, 0x01]))
-    }
-    
-    func sendCameraCommand(command: Data){
-        self.lastCommand = command
-        self.peripheral?.setCommand(command: command) { result in
+    func getCameraWifi() {
+        print("getCameraWifi()")
+        peripheral?.requestCameraWifi() { result in
             switch result {
-            case .success(let response):
-                NSLog("Command Response: \(response)")
-                //Check command/response and do something
-                let commandResponse: CommandResponse = response
-                var messageHexString = ""
-                for i in 0 ..< commandResponse.command.count {
-                    messageHexString += String(format: "%02X", commandResponse.command[i])
-                }
-                NSLog("Command: \(messageHexString)")
-                if ((self.lastCommand![0] == 0x01) && (commandResponse.response[1] == 0x01)){
-                    //Shutter Command
-                    if (self.lastCommand![2] == 0x01){
-                        self.cameraStatus!.busy = true
-                    } else {
-                        self.cameraStatus!.busy = false
-                    }
-                } else if (commandResponse.response[1] == 0x17){
-                    if (commandResponse.response[2] == 0x00){
-                        //Enable WiFi Command
-                        
-                    }
-                }
-                //self.getCameraStatus()
+            case .success(let status):
+                print("requestCameraWif Status: \(status)")
+                self.sendCommand2()
                 self.updateDisplay()
             case .failure(let error):
-                NSLog("\(error)")
-                self.getCameraStatus()
+                print("\(error)")
+                //self.getCameraStatus()
             }
         }
     }
     
-    func getCameraStatus() {
-        peripheral?.requestCameraStatus() { result in
+    func sendCommand2() {
+        print("sendCommand2()")
+        peripheral?.command2() { result in
             switch result {
             case .success(let status):
-                print("Camera Status: \(status)")
-                self.cameraStatus = status
+                print("Command2 Status: \(status)")
+                self.sendCommand3()
                 self.updateDisplay()
             case .failure(let error):
                 print("\(error)")
-                self.getCameraStatus()
+                //self.getCameraStatus()
+            }
+        }
+    }
+    
+    func sendCommand3() {
+        print("sendCommand3()")
+        peripheral?.command3() { result in
+            switch result {
+            case .success(let status):
+                print("Command3 Status: \(status)")
+                self.updateDisplay()
+                self.joinWiFi(with: self.peripheral!.name + ".OSC", password: "88888888")
+            case .failure(let error):
+                print("\(error)")
+                //self.getCameraStatus()
             }
         }
     }
@@ -234,51 +225,23 @@ class CameraViewController: UIViewController {
     
     @objc func upKey() {
         if (cameraStatus?.mode == 0x00) {
-            getCameraStatus()
+            //getCameraStatus()
         } else if (cameraStatus?.mode == 0xEA) {
             cameraStatus?.mode = 0xE8
         } else {
             let mode = cameraStatus?.mode
             cameraStatus?.mode = mode! + 1
         }
-        var cmode:UInt8 = 0x00
-        switch (cameraStatus?.mode){
-        case 0xE8:
-            cmode = 0x00
-        case 0xE9:
-            cmode = 0x01
-        case 0xEA:
-            cmode = 0x02
-        default:
-            print("Unknown mode")
-        }
-        if((0xE8...0xEA).contains(cameraStatus!.mode)){
-            sendCameraCommand(command: Data([0x02,0x01,cmode]))
-        }
     }
     
     @objc func downKey() {
         if (cameraStatus?.mode == 0x00) {
-            getCameraStatus()
+            //getCameraStatus()
         } else if (cameraStatus?.mode == 0xE8) {
             cameraStatus?.mode = 0xEA
         } else {
             let mode = cameraStatus?.mode
             cameraStatus?.mode = mode! - 1
-        }
-        var cmode:UInt8 = 0x00
-        switch (cameraStatus?.mode){
-        case 0xE8:
-            cmode = 0x00
-        case 0xE9:
-            cmode = 0x01
-        case 0xEA:
-            cmode = 0x02
-        default:
-            print("Unknown mode")
-        }
-        if((0xE8...0xEA).contains(cameraStatus!.mode)){
-            sendCameraCommand(command: Data([0x02,0x01,cmode]))
         }
     }
     
@@ -287,7 +250,7 @@ class CameraViewController: UIViewController {
     }
     
     @objc func rightKey() {
-        enableWifi()
+        //Open Preview
         
     }
     

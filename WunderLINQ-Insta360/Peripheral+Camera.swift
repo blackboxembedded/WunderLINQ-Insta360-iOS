@@ -16,11 +16,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import Foundation
 import CoreBluetooth
 
-/// A struct representing the camera's Wi-Fi settings
-struct WiFiSettings {
-    var SSID: String
-    let password: String
-}
 
 /// A struct representing the camera's status
 struct CameraStatus {
@@ -35,66 +30,14 @@ struct CommandResponse {
 
 extension Peripheral {
     
-    /// Send Command to camera
-    /// - Parameter completion: The completion handler with an optional error that is invoked once the request completes.
-    ///
-    func setCommand(command: Data, completion: ((Result<CommandResponse, Error>) -> Void)?) {
-        var messageHexString = ""
-        for i in 0 ..< command.count {
-            messageHexString += String(format: "%02X", command[i])
-        }
-        NSLog("Command: \(messageHexString)")
-        
+    /// Reads camera's wifi info
+    func requestCameraWifi(_ completion: ((Result<CommandResponse, Error>) -> Void)?) {
         let serviceUUID = CBUUID(string: "BE80")
         let commandUUID = CBUUID(string: "0000BE81-0000-1000-8000-00805F9B34FB")
         let commandResponseUUID = CBUUID(string: "0000BE82-0000-1000-8000-00805F9B34FB")
-        let data = Data([UInt8(command.count)] + command)
+        let data = Data([0x14, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x08, 0x00, 0x02, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x0A, 0x02, 0x24, 0x30])
 
         let finishWithResult: (Result<CommandResponse, Error>) -> Void = { result in
-            // make sure to dispatch the result on the main thread
-            DispatchQueue.main.async {
-                completion?(result)
-            }
-        }
-        
-        registerObserver(serviceUUID: serviceUUID, characteristicUUID: commandResponseUUID) { data in
-
-            var messageHexString = ""
-            for i in 0 ..< data.count {
-                messageHexString += String(format: "%02X", data[i])
-            }
-            NSLog("Response: \(messageHexString)")
-            
-            // The response to a command is expected to be 3 bytes
-            if data.count != 3 {
-                finishWithResult(.failure(CameraError.invalidResponse))
-                return
-            }
-
-            // The third byte represents the camera response. If the byte is 0x00 then the request was successful
-            if (data[2] != 0x00) {
-                finishWithResult(.failure(CameraError.responseError))
-                return
-            }
-            
-            finishWithResult(.success(CommandResponse(command:command, response:data)))
-        } completion: { [weak self] error in
-            // Check that we successfully enable the notification for the response before writing to the characteristic
-            if error != nil { finishWithResult(.failure(error!)); return }
-            self?.write(data: data, serviceUUID: serviceUUID, characteristicUUID: commandUUID) { error in
-                if error != nil { finishWithResult(.failure(error!)) }
-            }
-        }
-    }
-    
-    /// Reads camera's status
-    func requestCameraStatus(_ completion: ((Result<CameraStatus, Error>) -> Void)?) {
-        let serviceUUID = CBUUID(string: "BE80")
-        let commandUUID = CBUUID(string: "0000BE81-0000-1000-8000-00805F9B34FB")
-        let commandResponseUUID = CBUUID(string: "0000BE82-0000-1000-8000-00805F9B34FB")
-        let data = Data([0x07, 0x13, 0x08, 0x11, 0x2B, 0x2C, 0x37, 0x60])
-
-        let finishWithResult: (Result<CameraStatus, Error>) -> Void = { result in
             // make sure to dispatch the result on the main thread
             DispatchQueue.main.async {
                 completion?(result)
@@ -108,34 +51,107 @@ extension Peripheral {
                 messageHexString += String(format: "%02X", data[i])
             }
             NSLog("Status Raw: \(messageHexString)")
-            
-            // The response to the command is expected to be 12 bytes
-            if data.count < 18 {
-                finishWithResult(.failure(CameraError.invalidResponse))
-                return
+
+            finishWithResult(.success(CommandResponse(command:data, response:data)))
+            return
+        } completion: { [weak self] error in
+            // Check that we successfully enable the notification for the response before writing to the characteristic
+            if error != nil { finishWithResult(.failure(error!)); return }
+            self?.write(data: data, serviceUUID: serviceUUID, characteristicUUID: commandUUID) { error in
+                if error != nil { finishWithResult(.failure(error!)) }
             }
-            var cmode: UInt8 = 0x00
-            if (data[12] == 0x60){
-                cmode = data[17]
-            } else if(data[12] == 0x2C){
-                switch (data[11]){
-                case 0x00:
-                    //Video
-                    cmode = 0xE8
-                    if(data[14] == 0x01){
-                        cmode = 0xEA
-                    }
-                case 0x01:
-                    //Photo
-                    cmode = 0xE8
-                case 0x02:
-                    //Timelapse
-                    cmode = 0xEA
-                default:
-                    cmode = 0x00
-                }
+        }
+    }
+    
+    /// Reads camera's status
+    func requestCameraStatus(_ completion: ((Result<CommandResponse, Error>) -> Void)?) {
+        let serviceUUID = CBUUID(string: "BE80")
+        let commandUUID = CBUUID(string: "0000BE81-0000-1000-8000-00805F9B34FB")
+        let commandResponseUUID = CBUUID(string: "0000BE82-0000-1000-8000-00805F9B34FB")
+        let data = Data([0x1C, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x08, 0x00, 0x02, 0x01, 0x00, 0x00, 0x80, 0x00, 0x00,0x0A, 0x0A, 0x0B, 0x0F, 0x13, 0x16, 0x1E, 0x24, 0x25, 0x2b, 0x30, 0x43])
+
+        let finishWithResult: (Result<CommandResponse, Error>) -> Void = { result in
+            // make sure to dispatch the result on the main thread
+            DispatchQueue.main.async {
+                completion?(result)
             }
-            finishWithResult(.success(CameraStatus(busy: (data[5] == 0x01), mode: cmode)))
+        }
+
+        registerObserver(serviceUUID: serviceUUID, characteristicUUID: commandResponseUUID) { data in
+
+            var messageHexString = ""
+            for i in 0 ..< data.count {
+                messageHexString += String(format: "%02X", data[i])
+            }
+            NSLog("Status Raw: \(messageHexString)")
+
+            finishWithResult(.success(CommandResponse(command:data, response:data)))
+            return
+        } completion: { [weak self] error in
+            // Check that we successfully enable the notification for the response before writing to the characteristic
+            if error != nil { finishWithResult(.failure(error!)); return }
+            self?.write(data: data, serviceUUID: serviceUUID, characteristicUUID: commandUUID) { error in
+                if error != nil { finishWithResult(.failure(error!)) }
+            }
+        }
+    }
+    
+    /// ? Command 2
+    func command2(_ completion: ((Result<CommandResponse, Error>) -> Void)?) {
+        let serviceUUID = CBUUID(string: "BE80")
+        let commandUUID = CBUUID(string: "0000BE81-0000-1000-8000-00805F9B34FB")
+        let commandResponseUUID = CBUUID(string: "0000BE82-0000-1000-8000-00805F9B34FB")
+        let data = Data([0x36,0x00,0x00,0x00,0x04,0x00,0x00,0x27,0x00,0x02,0x02,0x00,0x00,0x80,0x00,0x00,0x0A,0x24,0x30,0x30,0x30,0x30,0x30,0x30,0x30,0x30,0x2D,0x34,0x62,0x33,0x61,0x2D,0x33,0x64,0x37,0x31,0x2D,0x66,0x66,0x66,0x66,0x2D,0x66,0x66,0x66,0x66,0x65,0x66,0x30,0x35,0x61,0x63,0x34,0x61])
+
+        let finishWithResult: (Result<CommandResponse, Error>) -> Void = { result in
+            // make sure to dispatch the result on the main thread
+            DispatchQueue.main.async {
+                completion?(result)
+            }
+        }
+
+        registerObserver(serviceUUID: serviceUUID, characteristicUUID: commandResponseUUID) { data in
+
+            var messageHexString = ""
+            for i in 0 ..< data.count {
+                messageHexString += String(format: "%02X", data[i])
+            }
+            NSLog("Status Raw: \(messageHexString)")
+
+            finishWithResult(.success(CommandResponse(command:data, response:data)))
+            return
+        } completion: { [weak self] error in
+            // Check that we successfully enable the notification for the response before writing to the characteristic
+            if error != nil { finishWithResult(.failure(error!)); return }
+            self?.write(data: data, serviceUUID: serviceUUID, characteristicUUID: commandUUID) { error in
+                if error != nil { finishWithResult(.failure(error!)) }
+            }
+        }
+    }
+    
+    /// ? Command 3
+    func command3(_ completion: ((Result<CommandResponse, Error>) -> Void)?) {
+        let serviceUUID = CBUUID(string: "BE80")
+        let commandUUID = CBUUID(string: "0000BE81-0000-1000-8000-00805F9B34FB")
+        let commandResponseUUID = CBUUID(string: "0000BE82-0000-1000-8000-00805F9B34FB")
+        let data = Data([0xFF,0x0C,0x01,0x01,0x00,0x00,0xCC])
+
+        let finishWithResult: (Result<CommandResponse, Error>) -> Void = { result in
+            // make sure to dispatch the result on the main thread
+            DispatchQueue.main.async {
+                completion?(result)
+            }
+        }
+
+        registerObserver(serviceUUID: serviceUUID, characteristicUUID: commandResponseUUID) { data in
+
+            var messageHexString = ""
+            for i in 0 ..< data.count {
+                messageHexString += String(format: "%02X", data[i])
+            }
+            NSLog("Status Raw: \(messageHexString)")
+
+            finishWithResult(.success(CommandResponse(command:data, response:data)))
             return
         } completion: { [weak self] error in
             // Check that we successfully enable the notification for the response before writing to the characteristic
