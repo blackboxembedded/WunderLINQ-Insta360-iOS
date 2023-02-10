@@ -2,6 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleTypeRole</key>
+            <string>Editor</string>
+            <key>CFBundleURLName</key>
+            <string>com.blackboxembedded.WunderLINQ-GoPro</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>wunderlinqgp</string>
+            </array>
+        </dict>
+    </array>
+    <key>NSBluetoothAlwaysUsageDescription</key>
+    <string>This will allow &quot;$(PRODUCT_NAME)&quot; to find and connect to GoPro Cameras</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -21,5 +36,10 @@
 			</array>
 		</dict>
 	</dict>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
 </dict>
 </plist>

@@ -111,6 +111,7 @@
 		9617646E8B76E9C847C2A333 /* Pods_WunderLINQ_Insta360.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderLINQ_Insta360.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B92AF781FA5B4683529CDA1E /* Pods-WunderLINQ-Insta360.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ-Insta360.release.xcconfig"; path = "Target Support Files/Pods-WunderLINQ-Insta360/Pods-WunderLINQ-Insta360.release.xcconfig"; sourceTree = "<group>"; };
 		C4E8D0A70C61B18AF1920B8F /* Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.debug.xcconfig"; path = "Target Support Files/Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests/Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D8380D572995D2AF00249603 /* WunderLINQ-Insta360.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "WunderLINQ-Insta360.entitlements"; sourceTree = "<group>"; };
 		E50F1390B825CAC759A3D93A /* Pods-WunderLINQ-Insta360Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ-Insta360Tests.debug.xcconfig"; path = "Target Support Files/Pods-WunderLINQ-Insta360Tests/Pods-WunderLINQ-Insta360Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		F68E6540E0061557317531A8 /* Pods_WunderLINQ_Insta360Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderLINQ_Insta360Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -169,6 +170,7 @@
 		7EA435852995967600B6AC4E /* WunderLINQ-Insta360 */ = {
 			isa = PBXGroup;
 			children = (
+				D8380D572995D2AF00249603 /* WunderLINQ-Insta360.entitlements */,
 				7EA435D52995AA1600B6AC4E /* Localizable.strings */,
 				7EA435C029959D8A00B6AC4E /* Atomic.swift */,
 				7EA435BD29959D8900B6AC4E /* CameraError.swift */,
@@ -230,7 +232,6 @@
 				E50F1390B825CAC759A3D93A /* Pods-WunderLINQ-Insta360Tests.debug.xcconfig */,
 				52205B8FE3C06B22AB7DC7B9 /* Pods-WunderLINQ-Insta360Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

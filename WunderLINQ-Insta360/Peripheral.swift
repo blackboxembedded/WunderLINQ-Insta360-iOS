@@ -35,7 +35,7 @@ final class Peripheral: NSObject {
     private var notificationChangeCallbacks: [((Error?) -> Void)] = []
     private var characteristicObservers: [CBUUID: ((Data) -> ())] = [:]
 
-    let queue = DispatchQueue(label: "com.gopro.ble.peripheral.queue", qos: .default)
+    let queue = DispatchQueue(label: "com.insta360.ble.peripheral.queue", qos: .default)
 
     init(peripheral: CBPeripheral, localName: String, manager: CentralManager) {
         super.init()

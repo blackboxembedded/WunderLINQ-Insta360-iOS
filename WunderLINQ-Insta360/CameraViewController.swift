@@ -15,6 +15,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
 import UIKit
+import NetworkExtension
 
 class CameraViewController: UIViewController {
 
@@ -93,8 +94,6 @@ class CameraViewController: UIViewController {
         if (segue.identifier == "cameraViewToPreviewView") {
             let vc = segue.destination as! PreviewViewController
             vc.peripheral = self.peripheral
-            vc.wifiSettings = self.wifiSettings
-            vc.cameraStatus = self.cameraStatus
         }
     }
     
@@ -149,9 +148,11 @@ class CameraViewController: UIViewController {
     @objc func toggleShutter() {
         NSLog("toggleShutter()")
         if (cameraStatus!.busy){
-            sendCameraCommand(command: Data([0x01, 0x01, 0x00]))
+            //Stop
+            
         } else {
-            sendCameraCommand(command: Data([0x01, 0x01, 0x01]))
+            //Start
+            
         }
     }
     
@@ -183,7 +184,7 @@ class CameraViewController: UIViewController {
                 } else if (commandResponse.response[1] == 0x17){
                     if (commandResponse.response[2] == 0x00){
                         //Enable WiFi Command
-                        self.requestWiFiSettngs()
+                        
                     }
                 }
                 //self.getCameraStatus()
@@ -209,23 +210,23 @@ class CameraViewController: UIViewController {
         }
     }
     
-    func requestWiFiSettngs() {
-        NSLog("requestWiFiSettngs()")
-        self.peripheral?.requestWiFiSettings { result in
-            switch result {
-            case .success(let settings):
-                NSLog("WiFi settings: \(settings)")
-                self.wifiSettings = settings
-                let destinationVC = PreviewViewController()
-                destinationVC.peripheral = self.peripheral
-                destinationVC.wifiSettings = self.wifiSettings
-                destinationVC.cameraStatus = self.cameraStatus
-                self.performSegue(withIdentifier: "cameraViewToPreviewView", sender: self)
-            case .failure(let error):
-                NSLog("\(error)")
+    private func joinWiFi(with SSID: String, password: String) {
+        NSLog("Joining WiFi \(SSID)...")
+        let configuration = NEHotspotConfiguration(ssid: SSID, passphrase: password, isWEP: false)
+        
+        NEHotspotConfigurationManager.shared.apply(configuration) { error in
+            guard let error = error else {
+                NSLog("Joining WiFi succeeded");
+                return
+            }
+            NSLog("Joining WiFi failed: \(error)")
+            if error.localizedDescription == "already associated." {
+                print("Already Associated")
+                
             }
         }
     }
+    
     
     @objc func enterKey() {
         toggleShutter()

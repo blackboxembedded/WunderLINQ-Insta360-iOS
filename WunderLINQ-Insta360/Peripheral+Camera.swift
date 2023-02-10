@@ -48,9 +48,9 @@ extension Peripheral {
         }
         NSLog("Command: \(messageHexString)")
         
-        let serviceUUID = CBUUID(string: "FEA6")
-        let commandUUID = CBUUID(string: "B5F90072-AA8D-11E3-9046-0002A5D5C51B")
-        let commandResponseUUID = CBUUID(string: "B5F90073-AA8D-11E3-9046-0002A5D5C51B")
+        let serviceUUID = CBUUID(string: "BE80")
+        let commandUUID = CBUUID(string: "0000BE81-0000-1000-8000-00805F9B34FB")
+        let commandResponseUUID = CBUUID(string: "0000BE82-0000-1000-8000-00805F9B34FB")
         let data = Data([UInt8(command.count)] + command)
 
         let finishWithResult: (Result<CommandResponse, Error>) -> Void = { result in
@@ -89,68 +89,12 @@ extension Peripheral {
             }
         }
     }
-
-    /// Reads camera's Wi-Fi settings
-    /// - Parameter completion: The completion handler with a result representing either a success or a failure.
-    ///                         In the success case, the associated value is an instance of WiFiSettings
-    ///
-    /// Discussion:
-    /// Requesting Wi-Fi setting consists in reading characteristics GP-0002 (SSID) and GP-0003 (password)
-    /// on the GoPro WiFi Access Point service
-
-    func requestWiFiSettings(_ completion: ((Result<WiFiSettings, Error>) -> Void)?) {
-        let serviceUUID = CBUUID(string: "B5F90001-AA8D-11E3-9046-0002A5D5C51B")
-        var SSID: String?
-        var password: String?
-
-        let finishWithResult: (Result<WiFiSettings, Error>) -> Void = { result in
-            // make sure to dispatch the result on the main thread
-            DispatchQueue.main.async {
-                completion?(result)
-            }
-        }
-
-        let reads = DispatchGroup()
-        reads.enter()
-        readData(from: CBUUID(string: "B5F90002-AA8D-11E3-9046-0002A5D5C51B"), serviceUUID: serviceUUID) { result in
-            switch result {
-            case .success(let data):
-                // we got the data, let's convert to a string
-                SSID = String(bytes: data.subdata(in: 0..<data.count), encoding: .utf8)
-            case .failure(let error):
-                finishWithResult(.failure(error))
-            }
-            reads.leave()
-        }
-
-        reads.enter()
-        readData(from: CBUUID(string: "B5F90003-AA8D-11E3-9046-0002A5D5C51B"), serviceUUID: serviceUUID) { result in
-            switch result {
-            case .success(let data):
-                // we got the data, let's convert to a string
-                password = String(bytes: data.subdata(in: 0..<data.count), encoding: .utf8)
-            case .failure(let error):
-                finishWithResult(.failure(error))
-            }
-            reads.leave()
-        }
-
-        reads.notify(queue: .main) {
-            guard let SSID = SSID, let password = password else {
-                finishWithResult(.failure(CameraError.invalidResponse))
-                return
-            }
-
-            finishWithResult(.success(WiFiSettings(SSID: SSID, password: password)))
-        }
-    }
     
     /// Reads camera's status
-
     func requestCameraStatus(_ completion: ((Result<CameraStatus, Error>) -> Void)?) {
-        let serviceUUID = CBUUID(string: "FEA6")
-        let commandUUID = CBUUID(string: "B5F90076-AA8D-11E3-9046-0002A5D5C51B")
-        let commandResponseUUID = CBUUID(string: "B5F90077-AA8D-11E3-9046-0002A5D5C51B")
+        let serviceUUID = CBUUID(string: "BE80")
+        let commandUUID = CBUUID(string: "0000BE81-0000-1000-8000-00805F9B34FB")
+        let commandResponseUUID = CBUUID(string: "0000BE82-0000-1000-8000-00805F9B34FB")
         let data = Data([0x07, 0x13, 0x08, 0x11, 0x2B, 0x2C, 0x37, 0x60])
 
         let finishWithResult: (Result<CameraStatus, Error>) -> Void = { result in

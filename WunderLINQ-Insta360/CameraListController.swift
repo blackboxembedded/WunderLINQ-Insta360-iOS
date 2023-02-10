@@ -55,8 +55,8 @@ class CameraListController: UITableViewController {
         super.viewWillAppear(animated)
         
         NSLog("Scanning for Insta360 cameras..")
-        scanner.start(withServices: [CBUUID(string: "FEA6")])
-        notificationCenter.addObserver(self, selector:#selector(updateDisplay), name: NSNotification.Name("GoProFound"), object: nil)
+        scanner.start(withServices: [CBUUID(string: "BE80")])
+        notificationCenter.addObserver(self, selector:#selector(updateDisplay), name: NSNotification.Name("CameraFound"), object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
