@@ -26,6 +26,8 @@ class CameraViewController: UIViewController {
     var cameraStatus: CameraStatus?
     
     var lastCommand: Data?
+    
+    var timer = Timer()
    
     @IBAction func didTapImageView(_ sender: UITapGestureRecognizer) {
         //Open Preview
@@ -59,6 +61,9 @@ class CameraViewController: UIViewController {
         recordButton.backgroundColor = highlightColor
         recordButton.addTarget(self, action: #selector(toggleShutter), for: .touchUpInside)
         recordButton.isHidden = true
+        
+        INSCameraManager.socket().addObserver(self, forKeyPath: "cameraState", options: .new, context: nil)
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,6 +77,11 @@ class CameraViewController: UIViewController {
         if let peripheral = peripheral {
             NSLog("Disconnecting to \(peripheral.name)..")
             peripheral.disconnect()
+        }
+        
+        if INSCameraManager.socket().cameraState == .connected {
+            print("Camera is already connected")
+            INSCameraManager.shared().shutdown()
         }
     }
     
@@ -94,6 +104,34 @@ class CameraViewController: UIViewController {
         if (segue.identifier == "cameraViewToPreviewView") {
             let vc = segue.destination as! PreviewViewController
             vc.peripheral = self.peripheral
+        }
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        guard let object = object as? INSCameraManager else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+            return
+        }
+        guard let stateValue = change?[.newKey] as? UInt, let state = INSCameraState(rawValue: stateValue) else {
+            print("Invalid state value: \(change?[.newKey] ?? "nil")")
+            return
+        }
+        switch state {
+        case .found:
+            print("Camera Found")
+        case .connected:
+            print("Camera Connected")
+            /*
+            if manager == INSCameraManager.socketManager() {
+                startSendingHeartbeats()
+            }
+             */
+        case .connectFailed:
+            print("Camera Connect Failed")
+            //stopSendingHeartbeats()
+        default:
+            print("Camera Not connected")
+            //stopSendingHeartbeats()
         }
     }
     
@@ -208,12 +246,21 @@ class CameraViewController: UIViewController {
         NEHotspotConfigurationManager.shared.apply(configuration) { error in
             guard let error = error else {
                 NSLog("Joining WiFi succeeded");
+                if INSCameraManager.socket().cameraState == .connected {
+                    print("Camera is already connected")
+                } else {
+                    INSCameraManager.socket().setup()
+                }
                 return
             }
             NSLog("Joining WiFi failed: \(error)")
             if error.localizedDescription == "already associated." {
                 print("Already Associated")
-                
+                if INSCameraManager.socket().cameraState == .connected {
+                    print("Camera is already connected")
+                } else {
+                    INSCameraManager.socket().setup()
+                }
             }
         }
     }
@@ -263,6 +310,20 @@ class CameraViewController: UIViewController {
         } else {
             UIApplication.shared.openURL(url)
         }
+    }
+    
+    func startSendingHeartbeats() {
+        print("heartbeat start")
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.heartbeat), userInfo: nil, repeats: true)
+    }
+
+    func stopSendingHeartbeats() {
+        print("heartbeat canceled")
+        timer.invalidate()
+    }
+    
+    @objc func heartbeat() {
+        INSCameraManager.socket().commandManager.sendHeartbeats(with: nil)
     }
 
 }

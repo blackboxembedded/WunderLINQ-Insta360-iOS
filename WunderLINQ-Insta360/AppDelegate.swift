@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Keep screen unlocked
         application.isIdleTimerDisabled = true
         
+        INSCameraManager.shared().setup()
+        
         return true
     }
 
