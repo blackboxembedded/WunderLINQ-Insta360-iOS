@@ -20,7 +20,7 @@ import CoreBluetooth
 /// A struct representing the camera's status
 struct CameraStatus {
     var busy: Bool
-    var mode: UInt8
+    var mode: Int
 }
 
 struct CommandResponse {

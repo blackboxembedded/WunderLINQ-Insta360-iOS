@@ -62,6 +62,8 @@ class CameraViewController: UIViewController {
         recordButton.addTarget(self, action: #selector(toggleShutter), for: .touchUpInside)
         recordButton.isHidden = true
         
+        cameraStatus = CameraStatus(busy: false, mode: 0)
+        
         INSCameraManager.socket().addObserver(self, forKeyPath: "cameraState", options: .new, context: nil)
 
     }
@@ -121,17 +123,14 @@ class CameraViewController: UIViewController {
             print("Camera Found")
         case .connected:
             print("Camera Connected")
-            /*
-            if manager == INSCameraManager.socketManager() {
-                startSendingHeartbeats()
-            }
-             */
+            updateDisplay()
+            startSendingHeartbeats()
         case .connectFailed:
             print("Camera Connect Failed")
-            //stopSendingHeartbeats()
+            stopSendingHeartbeats()
         default:
             print("Camera Not connected")
-            //stopSendingHeartbeats()
+            stopSendingHeartbeats()
         }
     }
     
@@ -152,46 +151,93 @@ class CameraViewController: UIViewController {
     
     func updateDisplay() {
         print("updateDisplay()")
-        switch cameraStatus!.mode {
-        case 0xE8:
-            //Video
-            self.modeImageView.image = UIImage(systemName:"video")
-            if (cameraStatus!.busy) {
-                self.recordButton.setTitle(NSLocalizedString("task_title_stop_record", comment: ""), for: .normal)
-            } else {
-                self.recordButton.setTitle(NSLocalizedString("task_title_start_record", comment: ""), for: .normal)
+        if (cameraStatus != nil){
+            switch cameraStatus!.mode {
+            case 0:
+                //Normal
+                self.modeImageView.image = UIImage(systemName:"video")
+                if (cameraStatus!.busy) {
+                    self.recordButton.setTitle(NSLocalizedString("task_title_stop_record", comment: ""), for: .normal)
+                } else {
+                    self.recordButton.setTitle(NSLocalizedString("task_title_start_record", comment: ""), for: .normal)
+                }
+                self.recordButton.isHidden = false
+            case 1:
+                //HDR
+                self.modeImageView.image = UIImage(named: "hdr")
+                if (cameraStatus!.busy) {
+                    self.recordButton.setTitle(NSLocalizedString("task_title_stop_record", comment: ""), for: .normal)
+                } else {
+                    self.recordButton.setTitle(NSLocalizedString("task_title_start_record", comment: ""), for: .normal)
+                }
+                self.recordButton.isHidden = false
+            case 2:
+                //Interval
+                self.modeImageView.image = UIImage(named:"interval")
+                if (cameraStatus!.busy) {
+                    self.recordButton.setTitle(NSLocalizedString("task_title_stop_interval", comment: ""), for: .normal)
+                } else {
+                    self.recordButton.setTitle(NSLocalizedString("task_title_start_interval", comment: ""), for: .normal)
+                }
+                self.recordButton.isHidden = false
+            case 3:
+                //Timelapse
+                self.modeImageView.image = UIImage(systemName:"timelapse")
+                if (cameraStatus!.busy) {
+                    self.recordButton.setTitle(NSLocalizedString("task_title_stop_timelapse", comment: ""), for: .normal)
+                } else {
+                    self.recordButton.setTitle(NSLocalizedString("task_title_start_timelapse", comment: ""), for: .normal)
+                }
+                self.recordButton.isHidden = false
+            default:
+                //Unknown
+                self.modeImageView.image = nil
+                self.recordButton.isHidden = false
             }
-            self.recordButton.isHidden = false
-        case 0xE9:
-            //Photo
-            self.modeImageView.image = UIImage(systemName:"camera")
-            self.recordButton.setTitle(NSLocalizedString("task_title_photo", comment: ""), for: .normal)
-            self.recordButton.isHidden = false
-        case 0xEA:
-            //Timelapse
-            self.modeImageView.image = UIImage(systemName:"timelapse")
-            if (cameraStatus!.busy) {
-                self.recordButton.setTitle(NSLocalizedString("task_title_start_timelapse", comment: ""), for: .normal)
-            } else {
-                self.recordButton.setTitle(NSLocalizedString("task_title_start_timelapse", comment: ""), for: .normal)
-            }
-            self.recordButton.isHidden = false
-        default:
-            //Unknown
-            self.modeImageView.image = nil
-            self.recordButton.isHidden = false
         }
     }
     
     @objc func toggleShutter() {
         NSLog("toggleShutter()")
         if (cameraStatus!.busy){
-            //Stop
-            
+            //Stop Capture
+            let options = INSCaptureOptions()
+            INSCameraManager.shared().commandManager.stopCapture(with: options) { error, videoInfo in
+                if let error = error {
+                    print("stop capture error: \(error)")
+                } else if let videoInfo = videoInfo {
+                    print("video url: \(videoInfo.uri)")
+                }
+            }
+            cameraStatus!.busy = false
         } else {
-            //Start
-            
+            //Start Capture
+            let options = INSCaptureOptions()
+            switch (cameraStatus?.mode){
+            case 0:
+                options.mode = INSCaptureMode.normal
+                break;
+            case 1:
+                options.mode = INSCaptureMode.HDR
+                break;
+            case 2:
+                options.mode = INSCaptureMode.bulletTime
+                break;
+            case 3:
+                options.mode = INSCaptureMode.timeShift
+                break;
+            default:
+                options.mode = INSCaptureMode.normal
+                break;
+            }
+            INSCameraManager.shared().commandManager.startCapture(with: options) { error in
+                if let error = error {
+                    print("start capture error: \(error)")
+                }
+            }
+            cameraStatus!.busy = true
         }
+        getCaptureStatus()
     }
     
     func getCameraWifi() {
@@ -271,25 +317,25 @@ class CameraViewController: UIViewController {
     }
     
     @objc func upKey() {
-        if (cameraStatus?.mode == 0x00) {
-            //getCameraStatus()
-        } else if (cameraStatus?.mode == 0xEA) {
-            cameraStatus?.mode = 0xE8
-        } else {
-            let mode = cameraStatus?.mode
-            cameraStatus?.mode = mode! + 1
+        if(!cameraStatus!.busy) {
+            if (cameraStatus!.mode == 3) {
+                cameraStatus!.mode = 0
+            } else {
+                cameraStatus!.mode = cameraStatus!.mode + 1
+            }
         }
+        updateDisplay()
     }
     
     @objc func downKey() {
-        if (cameraStatus?.mode == 0x00) {
-            //getCameraStatus()
-        } else if (cameraStatus?.mode == 0xE8) {
-            cameraStatus?.mode = 0xEA
-        } else {
-            let mode = cameraStatus?.mode
-            cameraStatus?.mode = mode! - 1
+        if(!cameraStatus!.busy) {
+            if (cameraStatus!.mode == 0) {
+                cameraStatus!.mode = 3
+            } else {
+                cameraStatus!.mode = cameraStatus!.mode - 1
+            }
         }
+        updateDisplay()
     }
     
     @objc func leftKey() {
@@ -312,6 +358,35 @@ class CameraViewController: UIViewController {
         }
     }
     
+    func getCaptureStatus() {
+        INSCameraManager.socket().commandManager.getCurrentCaptureStatus { error, status in
+            if let error = error {
+                print("Error getting current capture status: \(error)")
+            } else if let status = status {
+                print("Current capture status: \(status.state)")
+                if (status.state == INSCameraCaptureState.notCapture){
+                    self.cameraStatus?.busy = false
+                } else if (status.state == INSCameraCaptureState.normalCapture){
+                    self.cameraStatus?.busy = true
+                    self.cameraStatus?.mode = 0
+                } else if (status.state == INSCameraCaptureState.hdrVideoCapture){
+                    self.cameraStatus?.busy = true
+                    self.cameraStatus?.mode = 1
+                } else if (status.state == INSCameraCaptureState.intervalVideoCapture){
+                    self.cameraStatus?.busy = true
+                    self.cameraStatus?.mode = 2
+                } else if (status.state == INSCameraCaptureState.timelapseCapture){
+                    self.cameraStatus?.busy = true
+                    self.cameraStatus?.mode = 3
+                } else if (status.state == INSCameraCaptureState.bulletTimeCapture){
+                    self.cameraStatus?.busy = true
+                    self.cameraStatus?.mode = 3
+                }
+                self.updateDisplay()
+            }
+        }
+    }
+    
     func startSendingHeartbeats() {
         print("heartbeat start")
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.heartbeat), userInfo: nil, repeats: true)
@@ -324,6 +399,7 @@ class CameraViewController: UIViewController {
     
     @objc func heartbeat() {
         INSCameraManager.socket().commandManager.sendHeartbeats(with: nil)
+        getCaptureStatus()
     }
 
 }
