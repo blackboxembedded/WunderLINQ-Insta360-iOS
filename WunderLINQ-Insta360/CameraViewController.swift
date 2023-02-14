@@ -83,7 +83,7 @@ class CameraViewController: UIViewController {
         
         if INSCameraManager.socket().cameraState == .connected {
             print("Camera is already connected")
-            //INSCameraManager.shared().shutdown()
+            INSCameraManager.shared().shutdown()
         }
     }
     
