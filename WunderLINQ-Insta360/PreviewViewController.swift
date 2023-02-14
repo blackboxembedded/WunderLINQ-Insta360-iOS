@@ -96,7 +96,7 @@ class PreviewViewController: UIViewController, INSCameraPreviewPlayerDelegate {
         mediaSession.stopRunning(completion: { error in
                 print("stop media session with err: \(error?.localizedDescription ?? "")")
             })
-        INSCameraManager.socket().removeObserver(self, forKeyPath: "cameraState")
+        //INSCameraManager.socket().removeObserver(self, forKeyPath: "cameraState")
         }
 
         func updateConfiguration() {
