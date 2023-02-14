@@ -237,21 +237,20 @@ extension Peripheral: CBPeripheralDelegate {
     }
 
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-        queue.async { [weak self] in
+        if let data = characteristic.value {
+            let dispatchData = Data(data)
+            queue.async { [weak self] in
             if characteristic.isNotifying {
-                if let data = characteristic.value {
-                    let observer = self?.characteristicObservers[characteristic.uuid]
-                    observer?(data)
-                }
+                let observer = self?.characteristicObservers[characteristic.uuid]
+                observer?(dispatchData)
             } else {
                 if error != nil {
                     self?.readCharacteristicCallbacks.first?(.failure(error!))
                 } else {
-                    if let data = characteristic.value {
-                        self?.readCharacteristicCallbacks.first?(.success(data))
-                    }
+                    self?.readCharacteristicCallbacks.first?(.success(dispatchData))
                 }
-                _ = self?.readCharacteristicCallbacks.removeFirst()
+                    _ = self?.readCharacteristicCallbacks.removeFirst()
+                }
             }
         }
     }

@@ -83,7 +83,7 @@ class CameraViewController: UIViewController {
         
         if INSCameraManager.socket().cameraState == .connected {
             print("Camera is already connected")
-            INSCameraManager.shared().shutdown()
+            //INSCameraManager.shared().shutdown()
         }
     }
     
@@ -344,7 +344,9 @@ class CameraViewController: UIViewController {
     
     @objc func rightKey() {
         //Open Preview
-        
+        let destinationVC = PreviewViewController()
+        destinationVC.peripheral = self.peripheral
+        self.performSegue(withIdentifier: "cameraViewToPreviewView", sender: self)
     }
     
     @objc func escapeKey() {

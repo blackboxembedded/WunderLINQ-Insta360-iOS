@@ -15,13 +15,19 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
 import UIKit
+import INSCameraSDK
 
-class PreviewViewController: UIViewController {
+class PreviewViewController: UIViewController, INSCameraPreviewPlayerDelegate {
     @IBOutlet weak var previewView: UIView!
     
     var peripheral: Peripheral?
     
     var child = SpinnerViewController()
+    
+    private var mediaSession = INSCameraMediaSession()
+    private var previewPlayer: INSCameraPreviewPlayer?
+    private var storageState: INSCameraStorageStatus?
+    private var videoEncode: INSVideoEncode = .H264
 
     
     override func viewDidLoad() {
@@ -34,11 +40,20 @@ class PreviewViewController: UIViewController {
         self.child = SpinnerViewController()
         addChild(child)
         child.view.frame = view.frame
+        
+        INSCameraManager.socket().addObserver(self, forKeyPath: "cameraState", options: .new, context: nil)
+        setupRenderView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
+        if let currentCamera = INSCameraManager.shared().currentCamera {
+            fetchOptions {
+                self.updateConfiguration()
+                self.runMediaSession()
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -77,7 +92,103 @@ class PreviewViewController: UIViewController {
         }
     }
     
-    private func startPreview() {
+    deinit {
+        mediaSession.stopRunning(completion: { error in
+                print("stop media session with err: \(error?.localizedDescription ?? "")")
+            })
+        INSCameraManager.socket().removeObserver(self, forKeyPath: "cameraState")
+        }
+
+        func updateConfiguration() {
+            mediaSession.expectedVideoResolution = INSVideoResolution.init(width: 1920, height: 960, fps: 30)
+            mediaSession.expectedVideoResolutionSecondary = INSVideoResolution.init(width: 960, height: 480, fps: 30)
+            mediaSession.previewStreamType = .secondary
+            mediaSession.expectedAudioSampleRate = .rate48000Hz
+            mediaSession.videoStreamEncode = .H264
+            mediaSession.gyroPlayMode = .default
+        }
+    
+    func setupRenderView() {
+        let height = view.bounds.height * 0.333
+        let frame = CGRect(x: 0, y: view.bounds.height - height, width: view.bounds.width, height: height)
+        previewPlayer = INSCameraPreviewPlayer(frame: frame, renderType: .sphericalPanoRender)
+        previewPlayer?.play(withGyroTimestampAdjust: 30)
+        previewPlayer?.delegate = self
+        if let renderView = previewPlayer?.renderView {
+            view.addSubview(renderView)
+        }
+        mediaSession.plug(previewPlayer!)
+            
+        if let offset = INSCameraManager.shared().currentCamera!.settings?.mediaOffset {
+            let rawValue = INSLensOffset(offset: offset).lensType
+            if rawValue == INSLensType.oneR577Wide.rawValue || rawValue == INSLensType.oneR283Wide.rawValue {
+                    previewPlayer?.renderView.enablePanGesture = false
+                    previewPlayer?.renderView.enablePinchGesture = false
+                    previewPlayer?.renderView.render.camera!.xFov = 37
+                    previewPlayer?.renderView.render.camera!.distance = 700
+                }
+            }
+        }
         
+        func fetchOptions(completion: (() -> Void)?) {
+            weak var weakSelf = self
+            let optionTypes: [NSNumber] = [NSNumber(value: INSCameraOptionsType.storageState.rawValue), NSNumber(value: INSCameraOptionsType.videoEncode.rawValue)]
+            INSCameraManager.shared().commandManager.getOptionsWithTypes(optionTypes) { (error, options, successTypes) in
+                guard let options = options else {
+                    completion?()
+                    return
+                }
+                weakSelf?.storageState = options.storageStatus
+                weakSelf?.videoEncode = options.videoEncode
+                completion?()
+            }
+        }
+
+        
+        func runMediaSession() {
+            guard INSCameraManager.shared().cameraState == .connected else {
+                return
+            }
+            if mediaSession.running {
+                view.isUserInteractionEnabled = false
+                mediaSession.commitChanges { [weak self] error in
+                    print("commitChanges media session with error: \(error?.localizedDescription ?? "nil")")
+                    self?.view.isUserInteractionEnabled = true
+                }
+            } else {
+                view.isUserInteractionEnabled = false
+                mediaSession.startRunning { [weak self] error in
+                    print("start running media session with error: \(error?.localizedDescription ?? "nil")")
+                    self?.view.isUserInteractionEnabled = true
+                }
+            }
+        }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "cameraState" {
+            if let state = change?[.newKey] as? INSCameraState {
+                switch state {
+                case .found:
+                    break
+                case .connected:
+                    runMediaSession()
+                default:
+                    mediaSession.stopRunning(completion: nil)
+                }
+            }
+        }
+    }
+
+    func offset(toPlay player: INSCameraPreviewPlayer) -> String? {
+        guard let mediaOffset = INSCameraManager.shared().currentCamera?.settings?.mediaOffset else { return nil }
+        
+        if (INSCameraManager.shared().currentCamera?.name == kInsta360CameraNameOneX
+            || INSCameraManager.shared().currentCamera?.name == kInsta360CameraNameOneR
+            || INSCameraManager.shared().currentCamera?.name == kInsta360CameraNameOneX2)
+            && INSLensOffset.isValidOffset(mediaOffset) {
+            return INSOffsetCalculator.convertOffset(mediaOffset, to: INSOffsetConvertType.oneX3040_2_2880)
+        }
+        
+        return mediaOffset
     }
 }
