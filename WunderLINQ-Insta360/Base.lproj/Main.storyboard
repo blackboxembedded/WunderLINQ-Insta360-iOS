@@ -13,13 +13,13 @@
         <!--Camera List Controller-->
         <scene sceneID="d5R-dc-pig">
             <objects>
-                <tableViewController id="lzU-RV-5Xf" customClass="CameraListController" customModule="WunderLINQ_GoPro" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="lzU-RV-5Xf" customClass="CameraListController" customModule="WunderLINQ_Insta360" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" estimatedRowHeight="-1" sectionHeaderHeight="100" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="4QJ-Tq-vRc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CameraListViewCell" id="V1O-Gb-yyi" customClass="CameraTableViewCell" customModule="WunderLINQ_GoPro" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CameraListViewCell" id="V1O-Gb-yyi" customClass="CameraTableViewCell" customModule="WunderLINQ_Insta360" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="50" width="393" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="V1O-Gb-yyi" id="FTc-qt-oay">
@@ -78,18 +78,15 @@
         <!--Camera View Controller-->
         <scene sceneID="6O3-hS-hIO">
             <objects>
-                <viewController id="cAf-BU-IIZ" customClass="CameraViewController" customModule="WunderLINQ_GoPro" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cAf-BU-IIZ" customClass="CameraViewController" customModule="WunderLINQ_Insta360" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jR5-jn-RFI">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="16v-Dj-91C">
-                                <rect key="frame" x="0.0" y="104" width="393" height="200"/>
+                                <rect key="frame" x="0.0" y="104" width="393" height="648"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="nVB-Yw-Q71"/>
-                                </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="hy8-i1-tKh" appends="YES" id="7Go-V9-pu3"/>
                                 </connections>
@@ -110,6 +107,7 @@
                         <constraints>
                             <constraint firstItem="16v-Dj-91C" firstAttribute="top" secondItem="zYe-cx-3HM" secondAttribute="top" constant="1" id="9Z9-Pn-Tcy"/>
                             <constraint firstItem="zYe-cx-3HM" firstAttribute="bottom" secondItem="ghZ-tg-nuG" secondAttribute="bottom" constant="16" id="Abz-gn-fg7"/>
+                            <constraint firstItem="ghZ-tg-nuG" firstAttribute="top" secondItem="16v-Dj-91C" secondAttribute="bottom" id="BHd-gi-eKl"/>
                             <constraint firstItem="16v-Dj-91C" firstAttribute="trailing" secondItem="zYe-cx-3HM" secondAttribute="trailing" id="Duj-5p-eYd"/>
                             <constraint firstItem="16v-Dj-91C" firstAttribute="leading" secondItem="zYe-cx-3HM" secondAttribute="leading" id="FOJ-Fv-KFU"/>
                             <constraint firstItem="ghZ-tg-nuG" firstAttribute="trailing" secondItem="zYe-cx-3HM" secondAttribute="trailing" id="N2o-eQ-H36"/>
@@ -137,7 +135,7 @@
         <!--Preview View Controller-->
         <scene sceneID="w5b-Zf-9cW">
             <objects>
-                <viewController id="lGG-Kp-ZKe" customClass="PreviewViewController" customModule="WunderLINQ_GoPro" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="lGG-Kp-ZKe" customClass="PreviewViewController" customModule="WunderLINQ_Insta360" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="deI-5r-qcy">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -187,7 +185,7 @@
         <!--Color Picker View Controller-->
         <scene sceneID="55C-H4-sn7">
             <objects>
-                <viewController storyboardIdentifier="ColorPickerViewController" id="8zk-r4-3vb" customClass="ColorPickerViewController" customModule="WunderLINQ_GoPro" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ColorPickerViewController" id="8zk-r4-3vb" customClass="ColorPickerViewController" customModule="WunderLINQ_Insta360" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NKw-Pa-aXf">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
