@@ -99,17 +99,17 @@ class PreviewViewController: UIViewController, INSCameraPreviewPlayerDelegate {
         //INSCameraManager.socket().removeObserver(self, forKeyPath: "cameraState")
         }
 
-        func updateConfiguration() {
-            mediaSession.expectedVideoResolution = INSVideoResolution.init(width: 1920, height: 960, fps: 30)
-            mediaSession.expectedVideoResolutionSecondary = INSVideoResolution.init(width: 960, height: 480, fps: 30)
-            mediaSession.previewStreamType = .secondary
-            mediaSession.expectedAudioSampleRate = .rate48000Hz
-            mediaSession.videoStreamEncode = .H264
-            mediaSession.gyroPlayMode = .default
-        }
+    func updateConfiguration() {
+        mediaSession.expectedVideoResolution = INSVideoResolution.init(width: 1920, height: 960, fps: 30)
+        mediaSession.expectedVideoResolutionSecondary = INSVideoResolution.init(width: 960, height: 480, fps: 30)
+        mediaSession.previewStreamType = .secondary
+        mediaSession.expectedAudioSampleRate = .rate48000Hz
+        mediaSession.videoStreamEncode = .H264
+        mediaSession.gyroPlayMode = .default
+    }
     
     func setupRenderView() {
-        let height = view.bounds.height * 0.333
+        let height = view.bounds.height
         let frame = CGRect(x: 0, y: view.bounds.height - height, width: view.bounds.width, height: height)
         previewPlayer = INSCameraPreviewPlayer(frame: frame, renderType: .sphericalPanoRender)
         previewPlayer?.play(withGyroTimestampAdjust: 30)
