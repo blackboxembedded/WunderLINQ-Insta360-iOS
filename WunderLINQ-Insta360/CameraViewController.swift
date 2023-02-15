@@ -26,6 +26,8 @@ class CameraViewController: UIViewController {
     var cameraStatus: CameraStatus?
     
     var lastCommand: Data?
+    var wifiResponse: Data?
+    var responsePosition: Int = 0
     
     var timer = Timer()
    
@@ -71,7 +73,8 @@ class CameraViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //getCameraWifi()
-        joinWiFi(with: self.peripheral!.name + ".OSC", password: "88888888")
+        sendCameraCommand(command: Data([0x14, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x08, 0x00, 0x02, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x0A, 0x02, 0x24, 0x30]))
+        //joinWiFi(with: self.peripheral!.name + ".OSC", password: "88888888")
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -240,16 +243,54 @@ class CameraViewController: UIViewController {
         getCaptureStatus()
     }
     
+    func sendCameraCommand(command: Data){
+        self.lastCommand = command
+        self.peripheral?.setCommand(command: command) { result in
+            switch result {
+            case .success(let response):
+                //Check command/response and do something
+                let commandResponse:Data = response.response
+                if self.wifiResponse == nil {
+                    if commandResponse[0] > 0x20 {
+                        self.wifiResponse = Data()
+                        self.wifiResponse?.append(contentsOf: commandResponse)
+                        self.responsePosition += commandResponse.count
+                    }
+                } else {
+                    if self.responsePosition != self.wifiResponse?.count {
+                        self.wifiResponse?.append(contentsOf: commandResponse)
+                        self.responsePosition += commandResponse.count
+                        if self.responsePosition == self.wifiResponse?.count {
+                            //print(Utils.ByteArraytoHex(response!))
+                            //mBluetoothLeService.command2()
+                            //mBluetoothLeService.command3()
+                            self.sendCameraCommand(command: Data([0x36,0x00,0x00,0x00,0x04,0x00,0x00,0x27,0x00,0x02,0x02,0x00,0x00,0x80,0x00,0x00,0x0A,0x24,0x30,0x30,0x30,0x30,0x30,0x30,0x30,0x30,0x2D,0x34,0x62,0x33,0x61,0x2D,0x33,0x64,0x37,0x31,0x2D,0x66,0x66,0x66,0x66,0x2D,0x66,0x66,0x66,0x66,0x65,0x66,0x30,0x35,0x61,0x63,0x34,0x61]))
+                        }
+                    } else {
+                        if commandResponse[0] == 0x12 {
+                            self.joinWiFi(with: self.peripheral!.name + ".OSC", password: "88888888")
+                        } else if commandResponse[0] == 0x07 {
+                            //Do Nothing
+                        }
+                    }
+                }
+                //self.updateDisplay()
+            case .failure(let error):
+                NSLog("\(error)")
+            }
+        }
+    }
+    
     func getCameraWifi() {
         print("getCameraWifi()")
         peripheral?.requestCameraWifi() { result in
             switch result {
             case .success(let status):
-                print("requestCameraWif Status: \(status)")
+                print("requestCameraWifi Status: \(status)")
                 self.sendCommand2()
                 self.updateDisplay()
             case .failure(let error):
-                print("\(error)")
+                print("ERRORR: \(error)")
                 //self.getCameraStatus()
             }
         }

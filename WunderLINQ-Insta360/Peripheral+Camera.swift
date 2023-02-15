@@ -30,8 +30,41 @@ struct CommandResponse {
 
 extension Peripheral {
     
+    /// Send Command to camera
+    /// - Parameter completion: The completion handler with an optional error that is invoked once the request completes.
+    ///
+    func setCommand(command: Data, completion: ((Result<CommandResponse, Error>) -> Void)?) {
+        let serviceUUID = CBUUID(string: "BE80")
+        let commandUUID = CBUUID(string: "0000BE81-0000-1000-8000-00805F9B34FB")
+        let commandResponseUUID = CBUUID(string: "0000BE82-0000-1000-8000-00805F9B34FB")
+        let data = command
+
+        let finishWithResult: (Result<CommandResponse, Error>) -> Void = { result in
+            // make sure to dispatch the result on the main thread
+            DispatchQueue.main.async {
+                completion?(result)
+            }
+        }
+        
+        registerObserver(serviceUUID: serviceUUID, characteristicUUID: commandResponseUUID) { data in
+            var messageHexString = ""
+            for i in 0 ..< data.count {
+                messageHexString += String(format: "%02X", data[i])
+            }
+            NSLog("Response Raw: \(messageHexString)")
+            finishWithResult(.success(CommandResponse(command:command, response:data)))
+        } completion: { [weak self] error in
+            // Check that we successfully enable the notification for the response before writing to the characteristic
+            if error != nil { finishWithResult(.failure(error!)); return }
+            self?.write(data: data, serviceUUID: serviceUUID, characteristicUUID: commandUUID) { error in
+                if error != nil { finishWithResult(.failure(error!)) }
+            }
+        }
+    }
+    
     /// Reads camera's wifi info
     func requestCameraWifi(_ completion: ((Result<CommandResponse, Error>) -> Void)?) {
+        //let serviceUUID = CBUUID(string: "0000BE80-0000-1000-8000-00805F9B34FB")
         let serviceUUID = CBUUID(string: "BE80")
         let commandUUID = CBUUID(string: "0000BE81-0000-1000-8000-00805F9B34FB")
         let commandResponseUUID = CBUUID(string: "0000BE82-0000-1000-8000-00805F9B34FB")

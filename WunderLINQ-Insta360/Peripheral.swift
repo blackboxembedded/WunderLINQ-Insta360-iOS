@@ -240,16 +240,19 @@ extension Peripheral: CBPeripheralDelegate {
         if let data = characteristic.value {
             let dispatchData = Data(data)
             queue.async { [weak self] in
-            if characteristic.isNotifying {
-                let observer = self?.characteristicObservers[characteristic.uuid]
-                observer?(dispatchData)
-            } else {
-                if error != nil {
-                    self?.readCharacteristicCallbacks.first?(.failure(error!))
+                if characteristic.isNotifying {
+                    let observer = self?.characteristicObservers[characteristic.uuid]
+                    observer?(dispatchData)
                 } else {
-                    self?.readCharacteristicCallbacks.first?(.success(dispatchData))
-                }
-                    _ = self?.readCharacteristicCallbacks.removeFirst()
+                    if error != nil {
+                        self?.readCharacteristicCallbacks.first?(.failure(error!))
+                    } else {
+                        self?.readCharacteristicCallbacks.first?(.success(dispatchData))
+                    }
+                    if ((self?.readCharacteristicCallbacks.count)! > 0 ){
+                        _ = self?.readCharacteristicCallbacks.removeFirst()
+                        
+                    }
                 }
             }
         }
