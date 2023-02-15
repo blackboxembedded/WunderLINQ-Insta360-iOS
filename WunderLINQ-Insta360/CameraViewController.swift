@@ -261,9 +261,6 @@ class CameraViewController: UIViewController {
                         self.wifiResponse?.append(contentsOf: commandResponse)
                         self.responsePosition += commandResponse.count
                         if self.responsePosition == self.wifiResponse?.count {
-                            //print(Utils.ByteArraytoHex(response!))
-                            //mBluetoothLeService.command2()
-                            //mBluetoothLeService.command3()
                             self.sendCameraCommand(command: Data([0x36,0x00,0x00,0x00,0x04,0x00,0x00,0x27,0x00,0x02,0x02,0x00,0x00,0x80,0x00,0x00,0x0A,0x24,0x30,0x30,0x30,0x30,0x30,0x30,0x30,0x30,0x2D,0x34,0x62,0x33,0x61,0x2D,0x33,0x64,0x37,0x31,0x2D,0x66,0x66,0x66,0x66,0x2D,0x66,0x66,0x66,0x66,0x65,0x66,0x30,0x35,0x61,0x63,0x34,0x61]))
                         }
                     } else {
@@ -333,20 +330,24 @@ class CameraViewController: UIViewController {
         NEHotspotConfigurationManager.shared.apply(configuration) { error in
             guard let error = error else {
                 NSLog("Joining WiFi succeeded");
-                if INSCameraManager.socket().cameraState == .connected {
-                    print("Camera is already connected")
-                } else {
-                    INSCameraManager.socket().setup()
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                    if INSCameraManager.socket().cameraState == .connected {
+                        print("Camera is already connected")
+                    } else {
+                        INSCameraManager.socket().setup()
+                    }
                 }
                 return
             }
             NSLog("Joining WiFi failed: \(error)")
             if error.localizedDescription == "already associated." {
                 print("Already Associated")
-                if INSCameraManager.socket().cameraState == .connected {
-                    print("Camera is already connected")
-                } else {
-                    INSCameraManager.socket().setup()
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                    if INSCameraManager.socket().cameraState == .connected {
+                        print("Camera is already connected")
+                    } else {
+                        INSCameraManager.socket().setup()
+                    }
                 }
             }
         }
