@@ -30,6 +30,11 @@ class CameraViewController: UIViewController {
     var responsePosition: Int = 0
     
     var timer = Timer()
+    
+    let getCameraWiFi = Data([0x14, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x08, 0x00, 0x02, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x0A, 0x02, 0x24, 0x30])
+    let getCameraStatus = Data([0x1C, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x08, 0x00, 0x02, 0x01, 0x00, 0x00, 0x80, 0x00, 0x00,0x0A, 0x0A, 0x0B, 0x0F, 0x13, 0x16, 0x1E, 0x24, 0x25, 0x2b, 0x30, 0x43])
+    let command2 = Data([0x36,0x00,0x00,0x00,0x04,0x00,0x00,0x27,0x00,0x02,0x02,0x00,0x00,0x80,0x00,0x00,0x0A,0x24,0x30,0x30,0x30,0x30,0x30,0x30,0x30,0x30,0x2D,0x34,0x62,0x33,0x61,0x2D,0x33,0x64,0x37,0x31,0x2D,0x66,0x66,0x66,0x66,0x2D,0x66,0x66,0x66,0x66,0x65,0x66,0x30,0x35,0x61,0x63,0x34,0x61])
+    let command3 = Data([0xFF,0x0C,0x01,0x01,0x00,0x00,0xCC])
    
     @IBAction func didTapImageView(_ sender: UITapGestureRecognizer) {
         //Open Preview
@@ -72,9 +77,7 @@ class CameraViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //getCameraWifi()
-        sendCameraCommand(command: Data([0x14, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x08, 0x00, 0x02, 0x00, 0x00, 0x00, 0x80, 0x00, 0x00, 0x0A, 0x02, 0x24, 0x30]))
-        //joinWiFi(with: self.peripheral!.name + ".OSC", password: "88888888")
+        sendCameraCommand(command: getCameraWiFi)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -153,7 +156,6 @@ class CameraViewController: UIViewController {
     }
     
     func updateDisplay() {
-        print("updateDisplay()")
         if (cameraStatus != nil){
             switch cameraStatus!.mode {
             case 0:
@@ -169,9 +171,9 @@ class CameraViewController: UIViewController {
                 //HDR
                 self.modeImageView.image = UIImage(named: "hdr")
                 if (cameraStatus!.busy) {
-                    self.recordButton.setTitle(NSLocalizedString("task_title_stop_record", comment: ""), for: .normal)
+                    self.recordButton.setTitle(NSLocalizedString("task_title_stop_hdr", comment: ""), for: .normal)
                 } else {
-                    self.recordButton.setTitle(NSLocalizedString("task_title_start_record", comment: ""), for: .normal)
+                    self.recordButton.setTitle(NSLocalizedString("task_title_start_hdr", comment: ""), for: .normal)
                 }
                 self.recordButton.isHidden = false
             case 2:
@@ -245,7 +247,7 @@ class CameraViewController: UIViewController {
     
     func sendCameraCommand(command: Data){
         self.lastCommand = command
-        self.peripheral?.setCommand(command: command) { result in
+        self.peripheral?.setCommand(command: command) { [self] result in
             switch result {
             case .success(let response):
                 //Check command/response and do something
@@ -261,7 +263,7 @@ class CameraViewController: UIViewController {
                         self.wifiResponse?.append(contentsOf: commandResponse)
                         self.responsePosition += commandResponse.count
                         if self.responsePosition == self.wifiResponse?.count {
-                            self.sendCameraCommand(command: Data([0x36,0x00,0x00,0x00,0x04,0x00,0x00,0x27,0x00,0x02,0x02,0x00,0x00,0x80,0x00,0x00,0x0A,0x24,0x30,0x30,0x30,0x30,0x30,0x30,0x30,0x30,0x2D,0x34,0x62,0x33,0x61,0x2D,0x33,0x64,0x37,0x31,0x2D,0x66,0x66,0x66,0x66,0x2D,0x66,0x66,0x66,0x66,0x65,0x66,0x30,0x35,0x61,0x63,0x34,0x61]))
+                            self.sendCameraCommand(command: self.command2)
                         }
                     } else {
                         if commandResponse[0] == 0x12 {
@@ -278,51 +280,6 @@ class CameraViewController: UIViewController {
         }
     }
     
-    func getCameraWifi() {
-        print("getCameraWifi()")
-        peripheral?.requestCameraWifi() { result in
-            switch result {
-            case .success(let status):
-                print("requestCameraWifi Status: \(status)")
-                self.sendCommand2()
-                self.updateDisplay()
-            case .failure(let error):
-                print("ERRORR: \(error)")
-                //self.getCameraStatus()
-            }
-        }
-    }
-    
-    func sendCommand2() {
-        print("sendCommand2()")
-        peripheral?.command2() { result in
-            switch result {
-            case .success(let status):
-                print("Command2 Status: \(status)")
-                self.sendCommand3()
-                self.updateDisplay()
-            case .failure(let error):
-                print("\(error)")
-                //self.getCameraStatus()
-            }
-        }
-    }
-    
-    func sendCommand3() {
-        print("sendCommand3()")
-        peripheral?.command3() { result in
-            switch result {
-            case .success(let status):
-                print("Command3 Status: \(status)")
-                self.updateDisplay()
-                self.joinWiFi(with: self.peripheral!.name + ".OSC", password: "88888888")
-            case .failure(let error):
-                print("\(error)")
-                //self.getCameraStatus()
-            }
-        }
-    }
-    
     private func joinWiFi(with SSID: String, password: String) {
         NSLog("Joining WiFi \(SSID)...")
         let configuration = NEHotspotConfiguration(ssid: SSID, passphrase: password, isWEP: false)
@@ -330,7 +287,7 @@ class CameraViewController: UIViewController {
         NEHotspotConfigurationManager.shared.apply(configuration) { error in
             guard let error = error else {
                 NSLog("Joining WiFi succeeded");
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
                     if INSCameraManager.socket().cameraState == .connected {
                         print("Camera is already connected")
                     } else {
@@ -407,7 +364,6 @@ class CameraViewController: UIViewController {
             if let error = error {
                 print("Error getting current capture status: \(error)")
             } else if let status = status {
-                print("Current capture status: \(status.state)")
                 if (status.state == INSCameraCaptureState.notCapture){
                     self.cameraStatus?.busy = false
                 } else if (status.state == INSCameraCaptureState.normalCapture){

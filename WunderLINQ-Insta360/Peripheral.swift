@@ -18,6 +18,7 @@ import CoreBluetooth
 
 /// A simple wrapper around CBPeripheral to handle CoreBluetooth Peripheral related tasks
 final class Peripheral: NSObject {
+    
     private let notificationCenter = NotificationCenter.default
     var identifier: String { return cbPeripheral.identifier.uuidString }
     var name: String = ""
