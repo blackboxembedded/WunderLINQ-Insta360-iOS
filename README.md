@@ -17,7 +17,7 @@ decode performance and fault data.
 
 4. Pull down dependencies
 ```
-carthage update --use-xcframeworks
+carthage update
 pod install
 ```
 5. Build and Run
