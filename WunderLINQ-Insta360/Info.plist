@@ -17,6 +17,8 @@
     </array>
     <key>NSBluetoothAlwaysUsageDescription</key>
     <string>This will allow &quot;$(PRODUCT_NAME)&quot; to find and connect to Insta360 Cameras</string>
+    <key>NSCameraUsageDescription</key>
+    <string>$(PRODUCT_NAME) requires access to your phone’s camera.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
