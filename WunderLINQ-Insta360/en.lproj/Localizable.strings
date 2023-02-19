@@ -22,4 +22,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "task_title_stop_hdr" = "Stop HDR Recording";
 "task_title_start_interval" = "Start Interval Recording";
 "task_title_stop_interval" = "Stop Interval Recording";
+"task_title_start_bullettime" = "Start Bullet Time Recording";
+"task_title_stop_bullettime" = "Stop Bullet Time Recording";
 "pref_highlightColor_title" = "Highlight Color";

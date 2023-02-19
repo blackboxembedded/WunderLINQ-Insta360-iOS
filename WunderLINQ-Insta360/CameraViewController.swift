@@ -177,12 +177,12 @@ class CameraViewController: UIViewController {
                 }
                 self.recordButton.isHidden = false
             case 2:
-                //Interval
+                //Interval/Bullet  Time
                 self.modeImageView.image = UIImage(named:"interval")
                 if (cameraStatus!.busy) {
-                    self.recordButton.setTitle(NSLocalizedString("task_title_stop_interval", comment: ""), for: .normal)
+                    self.recordButton.setTitle(NSLocalizedString("task_title_stop_bullettime", comment: ""), for: .normal)
                 } else {
-                    self.recordButton.setTitle(NSLocalizedString("task_title_start_interval", comment: ""), for: .normal)
+                    self.recordButton.setTitle(NSLocalizedString("task_title_start_bullettime", comment: ""), for: .normal)
                 }
                 self.recordButton.isHidden = false
             case 3:
@@ -197,7 +197,10 @@ class CameraViewController: UIViewController {
             default:
                 //Unknown
                 self.modeImageView.image = nil
-                self.recordButton.isHidden = false
+                if (cameraStatus!.busy) {
+                    self.recordButton.setTitle(NSLocalizedString("task_title_stop_record", comment: ""), for: .normal)
+                    self.recordButton.isHidden = false
+                }
             }
         }
     }
@@ -391,6 +394,7 @@ class CameraViewController: UIViewController {
                 print("getCaptureStatus(): \(status.state)")
                 if (status.state == INSCameraCaptureState.notCapture){
                     self.cameraStatus?.busy = false
+                    self.cameraStatus?.mode = 0
                 } else if (status.state == INSCameraCaptureState.normalCapture){
                     print("normalCapture")
                     self.cameraStatus?.busy = true
