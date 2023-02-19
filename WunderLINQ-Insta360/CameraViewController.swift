@@ -217,29 +217,53 @@ class CameraViewController: UIViewController {
             cameraStatus!.busy = false
         } else {
             //Start Capture
-            let options = INSCaptureOptions()
             switch (cameraStatus?.mode){
             case 0:
+                let options = INSCaptureOptions()
                 options.mode = INSCaptureMode.normal
+                INSCameraManager.shared().commandManager.startCapture(with: options) { error in
+                    if let error = error {
+                        print("start capture error: \(error)")
+                    }
+                }
                 break;
             case 1:
+                let options = INSCaptureOptions()
                 options.mode = INSCaptureMode.HDR
+                INSCameraManager.shared().commandManager.startCapture(with: options) { error in
+                    if let error = error {
+                        print("start capture error: \(error)")
+                    }
+                }
                 break;
             case 2:
+                let options = INSCaptureOptions()
                 options.mode = INSCaptureMode.bulletTime
+                INSCameraManager.shared().commandManager.startCapture(with: options) { error in
+                    if let error = error {
+                        print("start capture error: \(error)")
+                    }
+                }
                 break;
             case 3:
-                options.mode = INSCaptureMode.timeShift
+                let options = INSTimelapseOptions()
+                //options.duration = /* total record duration that you expect */
+                options.lapseTime = 500/* the time interval for capturing each picture */
+                let tloptions = INSStartCaptureTimelapseOptions()
+                tloptions.mode = INSTimelapseMode.video
+                tloptions.timelapseOptions = options
+                INSCameraManager.shared().commandManager.startCaptureTimelapse(with: tloptions) { error in
+                    if let error = error {
+                        print("start timelapse capture error: \(error)")
+                    }
+                }
+                
                 break;
             default:
-                options.mode = INSCaptureMode.normal
+                print("Unexpected Mode")
                 break;
             }
-            INSCameraManager.shared().commandManager.startCapture(with: options) { error in
-                if let error = error {
-                    print("start capture error: \(error)")
-                }
-            }
+            
             cameraStatus!.busy = true
         }
         getCaptureStatus()
@@ -364,21 +388,31 @@ class CameraViewController: UIViewController {
             if let error = error {
                 print("Error getting current capture status: \(error)")
             } else if let status = status {
+                print("getCaptureStatus(): \(status.state)")
                 if (status.state == INSCameraCaptureState.notCapture){
                     self.cameraStatus?.busy = false
                 } else if (status.state == INSCameraCaptureState.normalCapture){
+                    print("normalCapture")
                     self.cameraStatus?.busy = true
                     self.cameraStatus?.mode = 0
                 } else if (status.state == INSCameraCaptureState.hdrVideoCapture){
+                    print("hdrVideoCapture")
                     self.cameraStatus?.busy = true
                     self.cameraStatus?.mode = 1
-                } else if (status.state == INSCameraCaptureState.intervalVideoCapture){
+                } else if (status.state == INSCameraCaptureState.intervalShootingCapture){
+                    print("intervalShootingCapture")
                     self.cameraStatus?.busy = true
                     self.cameraStatus?.mode = 2
                 } else if (status.state == INSCameraCaptureState.timelapseCapture){
+                    print("timelapseCapture")
                     self.cameraStatus?.busy = true
                     self.cameraStatus?.mode = 3
                 } else if (status.state == INSCameraCaptureState.bulletTimeCapture){
+                    print("bulletTimeCapture")
+                    self.cameraStatus?.busy = true
+                    self.cameraStatus?.mode = 2
+                } else if (status.state.rawValue == 13){
+                    print("timeShift")
                     self.cameraStatus?.busy = true
                     self.cameraStatus?.mode = 3
                 }
