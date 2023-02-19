@@ -326,17 +326,14 @@ class CameraViewController: UIViewController {
             NSLog("Joining WiFi failed: \(error)")
             if error.localizedDescription == "already associated." {
                 print("Already Associated")
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
-                    if INSCameraManager.socket().cameraState == .connected {
-                        print("Camera is already connected")
-                    } else {
-                        INSCameraManager.socket().setup()
-                    }
+                if INSCameraManager.socket().cameraState == .connected {
+                    print("Camera is already connected")
+                } else {
+                    INSCameraManager.socket().setup()
                 }
             }
         }
     }
-    
     
     @objc func enterKey() {
         toggleShutter()
@@ -391,32 +388,30 @@ class CameraViewController: UIViewController {
             if let error = error {
                 print("Error getting current capture status: \(error)")
             } else if let status = status {
-                print("getCaptureStatus(): \(status.state)")
                 if (status.state == INSCameraCaptureState.notCapture){
                     self.cameraStatus?.busy = false
-                    self.cameraStatus?.mode = 0
                 } else if (status.state == INSCameraCaptureState.normalCapture){
-                    print("normalCapture")
+                    //print("normalCapture")
                     self.cameraStatus?.busy = true
                     self.cameraStatus?.mode = 0
                 } else if (status.state == INSCameraCaptureState.hdrVideoCapture){
-                    print("hdrVideoCapture")
+                    //print("hdrVideoCapture")
                     self.cameraStatus?.busy = true
                     self.cameraStatus?.mode = 1
                 } else if (status.state == INSCameraCaptureState.intervalShootingCapture){
-                    print("intervalShootingCapture")
+                    //print("intervalShootingCapture")
                     self.cameraStatus?.busy = true
                     self.cameraStatus?.mode = 2
                 } else if (status.state == INSCameraCaptureState.timelapseCapture){
-                    print("timelapseCapture")
+                    //print("timelapseCapture")
                     self.cameraStatus?.busy = true
                     self.cameraStatus?.mode = 3
                 } else if (status.state == INSCameraCaptureState.bulletTimeCapture){
-                    print("bulletTimeCapture")
+                    //print("bulletTimeCapture")
                     self.cameraStatus?.busy = true
                     self.cameraStatus?.mode = 2
                 } else if (status.state.rawValue == 13){
-                    print("timeShift")
+                    //print("timeShift")
                     self.cameraStatus?.busy = true
                     self.cameraStatus?.mode = 3
                 }
@@ -426,12 +421,12 @@ class CameraViewController: UIViewController {
     }
     
     func startSendingHeartbeats() {
-        print("heartbeat start")
+        print("Heartbeat Start")
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.heartbeat), userInfo: nil, repeats: true)
     }
 
     func stopSendingHeartbeats() {
-        print("heartbeat canceled")
+        print("Heartbeat Canceled")
         timer.invalidate()
     }
     
