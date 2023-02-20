@@ -25,3 +25,11 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "task_title_start_bullettime" = "Start Bullet Time Recording";
 "task_title_stop_bullettime" = "Stop Bullet Time Recording";
 "pref_highlightColor_title" = "Highlight Color";
+"appsettings_label" = "App Settings";
+"about_label" = "About";
+"about_title" = "About";
+"version_label" = "Version:";
+"btn_documentation_title" = "Documentation";
+"btn_sendlogs_title" = "Send Logs";
+"sendlogs_body" = "Please describe your problem below:\n<";
+"sendlogs_intent_title" = "Send Logs…";

@@ -7,6 +7,7 @@ target 'WunderLINQ-Insta360' do
   # Pods for WunderLINQ-Insta360
   pod 'InAppSettingsKit', '~> 3.3.5'
   pod 'ChromaColorPicker', '~> 2.0.2'
+  pod 'Popovers'
 
   target 'WunderLINQ-Insta360Tests' do
     inherit! :search_paths

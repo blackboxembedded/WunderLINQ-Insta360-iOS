@@ -18,10 +18,15 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Create and write to log file
+        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+        let documentsDirectory = paths[0]
+        let fileName = "wunderlinq-insta360.log"
+        let logFilePath = (documentsDirectory as NSString).appendingPathComponent(fileName)
+        freopen(logFilePath.cString(using: String.Encoding.ascii)!, "a+", stderr)
         
         // Keep screen unlocked
         application.isIdleTimerDisabled = true

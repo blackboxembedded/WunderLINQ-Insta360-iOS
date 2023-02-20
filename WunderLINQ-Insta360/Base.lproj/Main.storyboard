@@ -68,8 +68,8 @@
                         <outlet property="cameraListTableView" destination="4QJ-Tq-vRc" id="rHy-1I-bfx"/>
                         <outlet property="tableView" destination="4QJ-Tq-vRc" id="xdV-rK-Qip"/>
                         <segue destination="cAf-BU-IIZ" kind="show" identifier="cameraListToCameraView" id="VRz-tg-pu2"/>
-                        <segue destination="8zk-r4-3vb" kind="show" id="rAD-1Q-qM6"/>
-                        <segue destination="L5R-rr-U4T" kind="show" id="mTt-wl-6wz"/>
+                        <segue destination="8zk-r4-3vb" kind="show" identifier="" id="rAD-1Q-qM6"/>
+                        <segue destination="L5R-rr-U4T" kind="show" identifier="camerasToAbout" id="mTt-wl-6wz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QQ0-7R-Ebx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -202,7 +202,7 @@
         <!--About-->
         <scene sceneID="L8z-cs-vyN">
             <objects>
-                <viewController title="About" id="L5R-rr-U4T" customClass="AboutViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="About" id="L5R-rr-U4T" customClass="AboutViewController" customModule="WunderLINQ_Insta360" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="15D-vD-aPy">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

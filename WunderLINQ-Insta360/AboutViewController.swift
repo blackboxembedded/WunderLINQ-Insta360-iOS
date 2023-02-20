@@ -68,10 +68,10 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
             // Get the documents folder url
             let documentDirectory = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
             // Destination url for the log file to be saved
-            let logURL = documentDirectory.appendingPathComponent("wunderlinq.log")
+            let logURL = documentDirectory.appendingPathComponent("wunderlinq-insta360.log")
             do {
                 let logAttachmentData = try Data(contentsOf: logURL)
-                mailComposer.addAttachmentData(logAttachmentData, mimeType: "text/log", fileName: "wunderlinq.log")
+                mailComposer.addAttachmentData(logAttachmentData, mimeType: "text/log", fileName: "wunderlinq-insta360.log")
             } catch let error {
                 print("We have encountered error \(error.localizedDescription)")
             }
@@ -108,20 +108,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let backBtn = UIButton()
-        backBtn.setImage(UIImage(named: "Left")?.withRenderingMode(.alwaysTemplate), for: .normal)
-        if #available(iOS 13.0, *) {
-            backBtn.tintColor = UIColor(named: "imageTint")
-        }
-        backBtn.addTarget(self, action: #selector(leftScreen), for: .touchUpInside)
-        let backButton = UIBarButtonItem(customView: backBtn)
-        let backButtonWidth = backButton.customView?.widthAnchor.constraint(equalToConstant: 30)
-        backButtonWidth?.isActive = true
-        let backButtonHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 30)
-        backButtonHeight?.isActive = true
-        self.navigationItem.title = NSLocalizedString("about_title", comment: "")
-        self.navigationItem.leftBarButtonItems = [backButton]
-        
         if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
             let versionLabelString = NSLocalizedString("version_label", comment: "")
             self.versionLabel.text = "\(versionLabelString) \(version)"

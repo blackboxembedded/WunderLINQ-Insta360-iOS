@@ -16,6 +16,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import UIKit
 import CoreBluetooth
 import InAppSettingsKit
+import Popovers
 
 class CameraListController: UITableViewController {
     
@@ -26,24 +27,35 @@ class CameraListController: UITableViewController {
     
     private let notificationCenter = NotificationCenter.default
     
+    private var menuBtn: UIButton?
+    
     var itemRow = 0
 
+    lazy var menu = Templates.UIKitMenu(sourceView: menuBtn!) {
+        Templates.MenuButton(title: NSLocalizedString("appsettings_label", comment: ""), systemImage: nil) { self.menuButton() }
+        Templates.MenuButton(title: NSLocalizedString("about_label", comment: ""), systemImage: nil) { self.aboutButton() }
+    } fadeLabel: { [weak self] fade in
+        //self?.label.alpha = fade ? 0.5 : 1
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
             
         self.navigationItem.title = NSLocalizedString("cameralist_title", comment: "")
-        let menuBtn = UIButton()
-        menuBtn.setImage(UIImage(named: "Menu")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        menuBtn = UIButton()
+        menuBtn!.setImage(UIImage(named: "Menu")?.withRenderingMode(.alwaysTemplate), for: .normal)
         if #available(iOS 13.0, *) {
-            menuBtn.tintColor = UIColor(named: "imageTint")
+            menuBtn!.tintColor = UIColor(named: "imageTint")
         }
-        menuBtn.addTarget(self, action: #selector(menuButton), for: .touchUpInside)
-        let menuButton = UIBarButtonItem(customView: menuBtn)
+        //menuBtn!.addTarget(self, action: #selector(menuButton), for: .touchUpInside)
+        let menuButton = UIBarButtonItem(customView: menuBtn!)
         let menuButtonWidth = menuButton.customView?.widthAnchor.constraint(equalToConstant: 30)
         menuButtonWidth?.isActive = true
         let menuButtonHeight = menuButton.customView?.heightAnchor.constraint(equalToConstant: 30)
         menuButtonHeight?.isActive = true
         self.navigationItem.rightBarButtonItems = [menuButton]
+        
+        _ = menu /// Create the menu.
         
         if let peripheral = peripheral {
             NSLog("Disconnecting to \(peripheral.name)..")
@@ -118,6 +130,9 @@ class CameraListController: UITableViewController {
     @objc func menuButton() {
         let appSettingsViewController = IASKAppSettingsViewController()
         self.navigationController!.pushViewController(appSettingsViewController, animated: true)
+    }
+    @objc func aboutButton() {
+        performSegue(withIdentifier: "camerasToAbout", sender: self)
     }
     
     @objc func enterKey() {
