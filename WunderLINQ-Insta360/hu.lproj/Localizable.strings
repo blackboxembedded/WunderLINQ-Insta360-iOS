@@ -20,3 +20,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "task_title_start_timelapse" = "Start Timelapse Recording";
 "task_title_stop_timelapse" = "Stop Timelapse Recording";
 "pref_highlightColor_title" = "Kiemelés színe";
+"appsettings_label" = "Applikáció beállításai";
+"about_title" = "Információk";
+"version_label" = "Verzió:";
+"btn_sendlogs_title" = "Elküldöttek";
+"sendlogs_intent_title" = "Elküldöttek…";
+"about_label" = "Információk";
+"sendlogs_body" = "Kérlek írd le a problémát:";
