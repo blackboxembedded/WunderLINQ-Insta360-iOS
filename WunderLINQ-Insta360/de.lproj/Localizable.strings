@@ -20,3 +20,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "task_title_start_timelapse" = "Start Timelapse Recording";
 "task_title_stop_timelapse" = "Stop Timelapse Recording";
 "pref_highlightColor_title" = "Auswahl-Farbe";
+"about_title" = "Über";
+"btn_sendlogs_title" = "Logdaten senden";
+"sendlogs_intent_title" = "Logdaten senden…";
+"about_label" = "Über";
+"sendlogs_body" = "Bitte beschreiben Sie Ihr Problem:";
+"appsettings_label" = "App-Einstellungen";
