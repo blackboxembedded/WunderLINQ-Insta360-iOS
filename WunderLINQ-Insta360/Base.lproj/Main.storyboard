@@ -69,6 +69,7 @@
                         <outlet property="tableView" destination="4QJ-Tq-vRc" id="xdV-rK-Qip"/>
                         <segue destination="cAf-BU-IIZ" kind="show" identifier="cameraListToCameraView" id="VRz-tg-pu2"/>
                         <segue destination="8zk-r4-3vb" kind="show" id="rAD-1Q-qM6"/>
+                        <segue destination="L5R-rr-U4T" kind="show" id="mTt-wl-6wz"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QQ0-7R-Ebx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -198,12 +199,100 @@
             </objects>
             <point key="canvasLocation" x="-1054" y="392"/>
         </scene>
+        <!--About-->
+        <scene sceneID="L8z-cs-vyN">
+            <objects>
+                <viewController title="About" id="L5R-rr-U4T" customClass="AboutViewController" customModule="WunderLINQ" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="15D-vD-aPy">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wunderlinq_logo" translatesAutoresizingMaskIntoConstraints="NO" id="fls-Vx-B7W">
+                                <rect key="frame" x="16" y="128" width="361" height="53"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version: x.x.x" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0x2-TF-lmt">
+                                <rect key="frame" x="0.0" y="206" width="393" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGS-W9-Qoh">
+                                <rect key="frame" x="0.0" y="228" width="393" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Black Box Embedded, LLC">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="corpNameBtnPressed:" destination="L5R-rr-U4T" eventType="touchUpInside" id="ObM-Lx-dXr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HhC-nd-ayy">
+                                <rect key="frame" x="16" y="277" width="361" height="30"/>
+                                <color key="backgroundColor" name="imageTint"/>
+                                <state key="normal" title="Documentation">
+                                    <color key="titleColor" name="backgrounds"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="btn_sendlogs_title"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="documentationBtnPressed:" destination="L5R-rr-U4T" eventType="touchUpInside" id="DXf-Ns-hTs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6FX-0D-Avg">
+                                <rect key="frame" x="16" y="323" width="361" height="30"/>
+                                <color key="backgroundColor" name="imageTint"/>
+                                <state key="normal" title="Send Logs">
+                                    <color key="titleColor" name="backgrounds"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="btn_sendlogs_title"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="sendLogsBtnPressed:" destination="L5R-rr-U4T" eventType="touchUpInside" id="7DR-0b-zzK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="lix-X5-mpG"/>
+                        <color key="backgroundColor" name="backgrounds"/>
+                        <constraints>
+                            <constraint firstItem="6FX-0D-Avg" firstAttribute="top" secondItem="HhC-nd-ayy" secondAttribute="bottom" constant="16" id="0eI-1F-i1L"/>
+                            <constraint firstItem="lix-X5-mpG" firstAttribute="trailing" secondItem="fls-Vx-B7W" secondAttribute="trailing" constant="16" id="1Cq-Xj-NYN"/>
+                            <constraint firstItem="lix-X5-mpG" firstAttribute="trailing" secondItem="0x2-TF-lmt" secondAttribute="trailing" id="1lY-jY-2D9"/>
+                            <constraint firstItem="eGS-W9-Qoh" firstAttribute="leading" secondItem="lix-X5-mpG" secondAttribute="leading" id="Jcx-vR-igo"/>
+                            <constraint firstItem="HhC-nd-ayy" firstAttribute="trailing" secondItem="6FX-0D-Avg" secondAttribute="trailing" id="P82-gA-01M"/>
+                            <constraint firstItem="6FX-0D-Avg" firstAttribute="leading" secondItem="lix-X5-mpG" secondAttribute="leading" constant="16" id="PTC-Ub-x1t"/>
+                            <constraint firstItem="HhC-nd-ayy" firstAttribute="top" secondItem="eGS-W9-Qoh" secondAttribute="bottom" constant="16" id="TPU-ZG-boD"/>
+                            <constraint firstItem="fls-Vx-B7W" firstAttribute="top" secondItem="lix-X5-mpG" secondAttribute="top" constant="25" id="WXZ-DZ-Ycf"/>
+                            <constraint firstItem="0x2-TF-lmt" firstAttribute="leading" secondItem="lix-X5-mpG" secondAttribute="leading" id="ZDb-70-IrB"/>
+                            <constraint firstItem="0x2-TF-lmt" firstAttribute="top" secondItem="fls-Vx-B7W" secondAttribute="bottom" constant="25" id="a9I-UC-b8l"/>
+                            <constraint firstItem="HhC-nd-ayy" firstAttribute="leading" secondItem="6FX-0D-Avg" secondAttribute="leading" id="fxK-D1-sg8"/>
+                            <constraint firstItem="lix-X5-mpG" firstAttribute="trailing" secondItem="eGS-W9-Qoh" secondAttribute="trailing" id="ksY-7O-oq5"/>
+                            <constraint firstItem="eGS-W9-Qoh" firstAttribute="top" secondItem="0x2-TF-lmt" secondAttribute="bottom" constant="5" id="lgq-s6-cr2"/>
+                            <constraint firstItem="fls-Vx-B7W" firstAttribute="leading" secondItem="lix-X5-mpG" secondAttribute="leading" constant="16" id="mDN-uV-hBZ"/>
+                            <constraint firstItem="lix-X5-mpG" firstAttribute="trailing" secondItem="6FX-0D-Avg" secondAttribute="trailing" constant="16" id="qzd-ag-ULU"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="About" id="HRh-18-Clt"/>
+                    <connections>
+                        <outlet property="logoImageView" destination="fls-Vx-B7W" id="Nlf-ih-Tw0"/>
+                        <outlet property="versionLabel" destination="0x2-TF-lmt" id="3E6-7V-TWG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zyC-SH-Sz4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1054" y="1090"/>
+        </scene>
     </scenes>
     <color key="tintColor" name="imageTint"/>
     <resources>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
+        <image name="wunderlinq_logo" width="247" height="53"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="backgrounds">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="imageTint">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
