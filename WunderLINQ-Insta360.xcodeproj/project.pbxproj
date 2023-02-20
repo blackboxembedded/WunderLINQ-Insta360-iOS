@@ -36,6 +36,8 @@
 		7EA435D129959D8D00B6AC4E /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435C529959D8C00B6AC4E /* ColorPickerViewController.swift */; };
 		7EA435D229959D8D00B6AC4E /* Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435C629959D8C00B6AC4E /* Peripheral.swift */; };
 		7EA435D72995AA1600B6AC4E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7EA435D52995AA1600B6AC4E /* Localizable.strings */; };
+		D8774C3729A31BF70053DB09 /* LocalisableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8774C3529A31BF70053DB09 /* LocalisableButton.swift */; };
+		D8774C3829A31BF70053DB09 /* LocalisableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8774C3629A31BF70053DB09 /* LocalisableLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +121,8 @@
 		B92AF781FA5B4683529CDA1E /* Pods-WunderLINQ-Insta360.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ-Insta360.release.xcconfig"; path = "Target Support Files/Pods-WunderLINQ-Insta360/Pods-WunderLINQ-Insta360.release.xcconfig"; sourceTree = "<group>"; };
 		C4E8D0A70C61B18AF1920B8F /* Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.debug.xcconfig"; path = "Target Support Files/Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests/Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D8380D572995D2AF00249603 /* WunderLINQ-Insta360.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "WunderLINQ-Insta360.entitlements"; sourceTree = "<group>"; };
+		D8774C3529A31BF70053DB09 /* LocalisableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalisableButton.swift; sourceTree = "<group>"; };
+		D8774C3629A31BF70053DB09 /* LocalisableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalisableLabel.swift; sourceTree = "<group>"; };
 		E50F1390B825CAC759A3D93A /* Pods-WunderLINQ-Insta360Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ-Insta360Tests.debug.xcconfig"; path = "Target Support Files/Pods-WunderLINQ-Insta360Tests/Pods-WunderLINQ-Insta360Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		F68E6540E0061557317531A8 /* Pods_WunderLINQ_Insta360Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderLINQ_Insta360Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -179,6 +183,8 @@
 		7EA435852995967600B6AC4E /* WunderLINQ-Insta360 */ = {
 			isa = PBXGroup;
 			children = (
+				D8774C3529A31BF70053DB09 /* LocalisableButton.swift */,
+				D8774C3629A31BF70053DB09 /* LocalisableLabel.swift */,
 				D8380D572995D2AF00249603 /* WunderLINQ-Insta360.entitlements */,
 				7EA435D52995AA1600B6AC4E /* Localizable.strings */,
 				7E21DEA029A2DD150087185C /* AboutViewController.swift */,
@@ -530,7 +536,9 @@
 				7EA435CB29959D8D00B6AC4E /* Peripheral+Camera.swift in Sources */,
 				7EA435CA29959D8D00B6AC4E /* CameraTableViewCell.swift in Sources */,
 				7EA435892995967600B6AC4E /* SceneDelegate.swift in Sources */,
+				D8774C3729A31BF70053DB09 /* LocalisableButton.swift in Sources */,
 				7E21DEA129A2DD160087185C /* AboutViewController.swift in Sources */,
+				D8774C3829A31BF70053DB09 /* LocalisableLabel.swift in Sources */,
 				7EA435C829959D8D00B6AC4E /* CameraListController.swift in Sources */,
 				7EA435C729959D8D00B6AC4E /* CentralManager.swift in Sources */,
 				7EA435C929959D8D00B6AC4E /* CameraError.swift in Sources */,

@@ -226,20 +226,20 @@
                                     <action selector="corpNameBtnPressed:" destination="L5R-rr-U4T" eventType="touchUpInside" id="ObM-Lx-dXr"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HhC-nd-ayy">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HhC-nd-ayy" customClass="LocalisableButton" customModule="WunderLINQ_Insta360" customModuleProvider="target">
                                 <rect key="frame" x="16" y="277" width="361" height="30"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <state key="normal" title="Documentation">
                                     <color key="titleColor" name="backgrounds"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="btn_sendlogs_title"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localisedKey" value="btn_documentation_title"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="documentationBtnPressed:" destination="L5R-rr-U4T" eventType="touchUpInside" id="DXf-Ns-hTs"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6FX-0D-Avg">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6FX-0D-Avg" customClass="LocalisableButton" customModule="WunderLINQ_Insta360" customModuleProvider="target">
                                 <rect key="frame" x="16" y="323" width="361" height="30"/>
                                 <color key="backgroundColor" name="imageTint"/>
                                 <state key="normal" title="Send Logs">
