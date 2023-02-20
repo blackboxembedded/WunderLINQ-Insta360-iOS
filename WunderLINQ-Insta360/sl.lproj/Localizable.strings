@@ -20,3 +20,10 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "task_title_start_timelapse" = "Start Timelapse Recording";
 "task_title_stop_timelapse" = "Stop Timelapse Recording";
 "pref_highlightColor_title" = "Barva poudarka";
+"appsettings_label" = "Nastavitve aplikacije";
+"about_title" = "O aplikaciji";
+"version_label" = "Verzija:";
+"btn_sendlogs_title" = "Pošlji dnevnik";
+"sendlogs_intent_title" = "Pošlji dnevnike…";
+"about_label" = "O aplikaciji";
+"sendlogs_body" = "Prosimo spodaj opišite vaše težave:";
