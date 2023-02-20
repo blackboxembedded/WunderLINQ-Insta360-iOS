@@ -49,7 +49,6 @@ class AboutViewController: UIViewController, MFMailComposeViewControllerDelegate
         }
     }
     
-    
     @IBAction func sendLogsBtnPressed(_ sender: Any) {
         if MFMailComposeViewController.canSendMail() {
             var dateFormatter: DateFormatter {

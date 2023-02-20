@@ -47,7 +47,6 @@ class CameraListController: UITableViewController {
         if #available(iOS 13.0, *) {
             menuBtn!.tintColor = UIColor(named: "imageTint")
         }
-        //menuBtn!.addTarget(self, action: #selector(menuButton), for: .touchUpInside)
         let menuButton = UIBarButtonItem(customView: menuBtn!)
         let menuButtonWidth = menuButton.customView?.widthAnchor.constraint(equalToConstant: 30)
         menuButtonWidth?.isActive = true
@@ -131,6 +130,7 @@ class CameraListController: UITableViewController {
         let appSettingsViewController = IASKAppSettingsViewController()
         self.navigationController!.pushViewController(appSettingsViewController, animated: true)
     }
+    
     @objc func aboutButton() {
         performSegue(withIdentifier: "camerasToAbout", sender: self)
     }
