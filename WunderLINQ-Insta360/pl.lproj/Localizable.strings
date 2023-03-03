@@ -26,4 +26,5 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "btn_sendlogs_title" = "Wyślij logi";
 "sendlogs_intent_title" = "Wyślij logi…";
 "about_label" = "O nas";
-"sendlogs_body" = "Opisz swój problem poniżej:";
+"sendlogs_body" = "Opisz swój problem poniżej:\n";
+"close_label" = "Zamknij";
