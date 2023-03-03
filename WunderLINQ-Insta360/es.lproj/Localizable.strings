@@ -25,5 +25,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "version_label" = "Versión:";
 "sendlogs_intent_title" = "Enviar Logs…";
 "about_label" = "Acerca de";
-"sendlogs_body" = "Por favor, describa su problema a continuación:";
+"sendlogs_body" = "Por favor, describa su problema a continuación:\n";
 "btn_sendlogs_title" = "Enviar Logs (registro)";
+"close_label" = "Cerrar";
