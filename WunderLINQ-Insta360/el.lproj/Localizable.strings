@@ -26,4 +26,5 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "btn_sendlogs_title" = "Αποστολή αρχείων καταγραφής";
 "about_label" = "Περί";
 "sendlogs_intent_title" = "Αποστολή αρχείων καταγραφής…";
-"sendlogs_body" = "Παρακαλώ περιγράψτε το πρόβλημα στο πεδίο:";
+"sendlogs_body" = "Παρακαλώ περιγράψτε το πρόβλημα στο πεδίο:\n";
+"close_label" = "Κλείσιμο";
