@@ -25,5 +25,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "version_label" = "Verze:";
 "sendlogs_intent_title" = "Odeslat logy…";
 "about_label" = "O aplikaci";
-"sendlogs_body" = "Prosím popište problém (anglicky):";
+"sendlogs_body" = "Prosím popište problém (anglicky):\n";
 "btn_sendlogs_title" = "Odeslat logy";
+"close_label" = "Zavřít";
