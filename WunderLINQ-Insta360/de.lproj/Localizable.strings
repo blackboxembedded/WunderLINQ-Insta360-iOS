@@ -24,5 +24,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "btn_sendlogs_title" = "Logdaten senden";
 "sendlogs_intent_title" = "Logdaten senden…";
 "about_label" = "Über";
-"sendlogs_body" = "Bitte beschreiben Sie Ihr Problem:";
+"sendlogs_body" = "Bitte beschreiben Sie Ihr Problem:\n";
 "appsettings_label" = "App-Einstellungen";
+"close_label" = "Schliessen";
