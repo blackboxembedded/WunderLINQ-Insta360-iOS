@@ -24,5 +24,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "about_title" = "アバウト";
 "version_label" = "バージョン：";
 "btn_sendlogs_title" = "ログの送信";
-"sendlogs_body" = "以下に問題点を記述して下さい:";
+"sendlogs_body" = "以下に問題点を記述して下さい:\n";
 "sendlogs_intent_title" = "ログを送る・・・";
+"about_label" = "およそ";
+"close_label" = "閉じる";
