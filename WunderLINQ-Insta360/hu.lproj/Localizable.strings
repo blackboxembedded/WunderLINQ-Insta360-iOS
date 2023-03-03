@@ -26,4 +26,5 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "btn_sendlogs_title" = "Elküldöttek";
 "sendlogs_intent_title" = "Elküldöttek…";
 "about_label" = "Információk";
-"sendlogs_body" = "Kérlek írd le a problémát:";
+"sendlogs_body" = "Kérlek írd le a problémát:\n";
+"close_label" = "Bezár";
