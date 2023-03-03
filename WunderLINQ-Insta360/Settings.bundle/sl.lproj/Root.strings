@@ -14,3 +14,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 "pref_highlightColor_title" = "Barva poudarka";
 "ui_title" = "Uporabniški vmesnik";
+"debug_settings_title" = "Nastavitve razhroščevanja";
+"pref_debuglogging_name" = "Omogoči beleženje razhroščevanja";
+"pref_debuglogging_summary" = "Omogoči le če to potrebuje podporni servis saj lahko vpliva na delovanje aplikacije.  Onemogočite ko je končano.";

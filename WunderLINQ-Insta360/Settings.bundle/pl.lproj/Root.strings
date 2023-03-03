@@ -14,3 +14,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 "pref_highlightColor_title" = "Kolor podkreślenia";
 "ui_title" = "Panel użytkownika";
+"debug_settings_title" = "Ustawienia błędów";
+"pref_debuglogging_name" = "Włącz zapis błędów";
+"pref_debuglogging_summary" = "Włącz tylko jeśli potrzebujesz do wsparcia. Może wpływać na wydajność działania. Wyłącz jak tylko nie potrzebujesz.";

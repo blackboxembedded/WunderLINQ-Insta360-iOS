@@ -22,11 +22,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // Create and write to log file
-        let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
-        let documentsDirectory = paths[0]
-        let fileName = "wunderlinq-insta360.log"
-        let logFilePath = (documentsDirectory as NSString).appendingPathComponent(fileName)
-        freopen(logFilePath.cString(using: String.Encoding.ascii)!, "a+", stderr)
+        if UserDefaults.standard.bool(forKey: "debug_logging_preference") {
+            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+            let documentsDirectory = paths[0]
+            let fileName = "wunderlinq-insta360.log"
+            let logFilePath = (documentsDirectory as NSString).appendingPathComponent(fileName)
+            
+            let fileManager = FileManager.default
+            
+            do {
+                let attributes = try fileManager.attributesOfItem(atPath: logFilePath)
+                let fileSize = attributes[FileAttributeKey.size] as! UInt64
+                
+                if fileSize > 20 * 1024 * 1024 {
+                    try fileManager.removeItem(atPath: logFilePath)
+                    NSLog("AppDelegate: File deleted successfully")
+                } else {
+                    NSLog("AppDelegate: File is not over 20MB")
+                }
+            } catch {
+                NSLog("AppDelegate: Error: \(error)")
+            }
+            freopen(logFilePath.cString(using: String.Encoding.ascii)!, "a+", stderr)
+        }
         
         // Keep screen unlocked
         application.isIdleTimerDisabled = true

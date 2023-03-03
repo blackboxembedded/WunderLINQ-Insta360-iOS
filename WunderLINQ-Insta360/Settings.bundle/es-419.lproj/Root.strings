@@ -14,3 +14,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 "pref_highlightColor_title" = "Highlight Color";
 "ui_title" = "Interfaz de Usuario";
+"debug_settings_title" = "Ajustes de depuración";
+"pref_debuglogging_name" = "Habilitar el registro de depuración (Debug Log)";
+"pref_debuglogging_summary" = "Sólo habilitar en caso de necesidad de soporte, podría impactar al rendimiento del dispositivo si siempre está activo. Por favor, deshabilitar cuando se termine.";

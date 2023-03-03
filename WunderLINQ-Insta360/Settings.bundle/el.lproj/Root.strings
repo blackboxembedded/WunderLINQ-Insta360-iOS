@@ -14,3 +14,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 "pref_highlightColor_title" = "Χρώμα επισήμανσης";
 "ui_title" = "Ρυθμίσεις χρήστη";
+"debug_settings_title" = "Ρυθμίσεις αποσφαλμάτωσης";
+"pref_debuglogging_name" = "Ενεργοποίηση καταγραφών αποσφαλμάτωσης";
+"pref_debuglogging_summary" = "Ενεργοποιήστε μόνο αν χρειαστεί από την υποστήριξη καθώς μπορεί να επιρρεάσει την απόδωση.  Παρακαλούμε απενεργοποιήστε όταν ολοκληρωθεί η υποστήριξη.";

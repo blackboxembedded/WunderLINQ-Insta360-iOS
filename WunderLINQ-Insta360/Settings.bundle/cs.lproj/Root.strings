@@ -14,3 +14,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 "pref_highlightColor_title" = "Highlight Color";
 "ui_title" = "Uživatelské prostředí";
+"debug_settings_title" = "Nastavení ladění";
+"pref_debuglogging_name" = "Povolit rozšířené logování";
+"pref_debuglogging_summary" = "Povolte pouze pro potřeby technické podpory, může mít vliv na výkon aplikace.";
