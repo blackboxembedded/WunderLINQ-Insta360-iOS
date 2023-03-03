@@ -22,4 +22,5 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "pref_highlightColor_title" = "Highlight Color";
 "btn_sendlogs_title" = "Enviar registros";
 "sendlogs_intent_title" = "Enviar registros…";
-"sendlogs_body" = "Por favor describa su problema a continuación:";
+"sendlogs_body" = "Por favor describa su problema a continuación:\n";
+"close_label" = "Cerrar";
