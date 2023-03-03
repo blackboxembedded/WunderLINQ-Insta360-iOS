@@ -26,4 +26,5 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "btn_sendlogs_title" = "Pošlji dnevnik";
 "sendlogs_intent_title" = "Pošlji dnevnike…";
 "about_label" = "O aplikaciji";
-"sendlogs_body" = "Prosimo spodaj opišite vaše težave:";
+"sendlogs_body" = "Prosimo spodaj opišite vaše težave:\n";
+"close_label" = "Zapri";
