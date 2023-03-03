@@ -24,6 +24,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "version_label" = "Version:";
 "btn_sendlogs_title" = "Envoyer les journaux";
 "about_label" = "À propos";
-"sendlogs_body" = "Entrez une description du problème ci-dessous :";
+"sendlogs_body" = "Entrez une description du problème ci-dessous :\n";
 "appsettings_label" = "Réglages";
 "sendlogs_intent_title" = "Envoyer les journaux…";
+"close_label" = "Fermer";
