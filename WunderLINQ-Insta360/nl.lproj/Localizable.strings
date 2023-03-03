@@ -25,5 +25,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "btn_sendlogs_title" = "Stuur Logbestanden";
 "sendlogs_intent_title" = "Stuur Logbestanden…";
 "about_label" = "Over";
-"sendlogs_body" = "Beschrijf uw problem hieronder:";
+"sendlogs_body" = "Beschrijf uw problem hieronder:\n";
 "appsettings_label" = "App Instellingen";
+"close_label" = "Sluiten";
