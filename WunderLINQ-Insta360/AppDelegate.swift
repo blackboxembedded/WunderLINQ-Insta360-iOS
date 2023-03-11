@@ -46,10 +46,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             freopen(logFilePath.cString(using: String.Encoding.ascii)!, "a+", stderr)
         }
         
-        // Keep screen unlocked
-        application.isIdleTimerDisabled = true
-        
         INSCameraManager.shared().setup()
+        
+        // Keep screen unlocked
+        UIApplication.shared.isIdleTimerDisabled = true
         
         return true
     }

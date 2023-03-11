@@ -43,6 +43,9 @@ class PreviewViewController: UIViewController, INSCameraPreviewPlayerDelegate {
         
         INSCameraManager.socket().addObserver(self, forKeyPath: "cameraState", options: .new, context: nil)
         setupRenderView()
+        
+        // Keep screen unlocked
+        UIApplication.shared.isIdleTimerDisabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

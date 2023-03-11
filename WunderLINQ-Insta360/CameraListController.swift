@@ -61,6 +61,9 @@ class CameraListController: UITableViewController {
             NSLog("Disconnecting to \(peripheral.name)..")
             peripheral.disconnect()
         }
+        
+        // Keep screen unlocked
+        UIApplication.shared.isIdleTimerDisabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
