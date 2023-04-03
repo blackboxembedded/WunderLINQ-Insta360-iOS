@@ -72,6 +72,9 @@ class CameraViewController: UIViewController {
         cameraStatus = CameraStatus(busy: false, mode: 0)
         
         INSCameraManager.socket().addObserver(self, forKeyPath: "cameraState", options: .new, context: nil)
+        
+        // Keep screen unlocked
+        UIApplication.shared.isIdleTimerDisabled = true
 
     }
     
