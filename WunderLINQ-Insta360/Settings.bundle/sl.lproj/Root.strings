@@ -17,3 +17,4 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "debug_settings_title" = "Nastavitve razhroščevanja";
 "pref_debuglogging_name" = "Omogoči beleženje razhroščevanja";
 "pref_debuglogging_summary" = "Omogoči le če to potrebuje podporni servis saj lahko vpliva na delovanje aplikacije.  Onemogočite ko je končano.";
+"pref_preview_name"= "Enable Camera Preview";

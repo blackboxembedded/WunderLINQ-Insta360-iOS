@@ -366,10 +366,12 @@ class CameraViewController: UIViewController {
     }
     
     @objc func rightKey() {
-        //Open Preview
-        let destinationVC = PreviewViewController()
-        destinationVC.peripheral = self.peripheral
-        self.performSegue(withIdentifier: "cameraViewToPreviewView", sender: self)
+        if UserDefaults.standard.bool(forKey: "prefEnablePreview") {
+            //Open Preview
+            let destinationVC = PreviewViewController()
+            destinationVC.peripheral = self.peripheral
+            self.performSegue(withIdentifier: "cameraViewToPreviewView", sender: self)
+        }
     }
     
     @objc func escapeKey() {

@@ -17,3 +17,4 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "debug_settings_title" = "Debug Settings";
 "pref_debuglogging_name" = "Enable Debug Logging";
 "pref_debuglogging_summary" = "Only enable if needed by Support, may impact performance if left running.  Please disable when finished.";
+"pref_preview_name"= "Enable Camera Preview";

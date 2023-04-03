@@ -17,3 +17,4 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "debug_settings_title" = "Hibakeresési beállítások";
 "pref_debuglogging_name" = "Hibakeresési napló engedélyezése";
 "pref_debuglogging_summary" = "Csak akkor aktiváld, ha a programtámogatásnak szüksége van rá, mert befolyásolhatja a teljesítményt, ha bekapcsolva marad. Kérelek deaktiváld ha végeztél.";
+"pref_preview_name"= "Enable Camera Preview";

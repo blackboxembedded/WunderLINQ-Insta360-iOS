@@ -17,3 +17,4 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "debug_settings_title" = "Ajustes de depuración";
 "pref_debuglogging_name" = "Habilitar el registro de depuración (Debug Log)";
 "pref_debuglogging_summary" = "Sólo habilitar en caso de necesidad de soporte, podría impactar al rendimiento del dispositivo si siempre está activo. Por favor, deshabilitar cuando se termine.";
+"pref_preview_name"= "Enable Camera Preview";

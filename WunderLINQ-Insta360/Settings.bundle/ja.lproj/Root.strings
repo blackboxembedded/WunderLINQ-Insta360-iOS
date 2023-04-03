@@ -17,3 +17,4 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "debug_settings_title" = "デバッグ設定";
 "pref_debuglogging_name" = "デバッグログを有効にする";
 "pref_debuglogging_summary" = "サポートで必要な場合のみ有効にする, 放置するとパフォーマンスに影響が出ます.  終了後は停止して下さい.";
+"pref_preview_name"= "Enable Camera Preview";

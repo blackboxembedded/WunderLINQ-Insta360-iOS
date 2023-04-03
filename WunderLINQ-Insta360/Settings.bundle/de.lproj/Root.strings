@@ -17,3 +17,4 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "debug_settings_title" = "Debug Einstellungen";
 "pref_debuglogging_name" = "Debug Logging einschalten";
 "pref_debuglogging_summary" = "Nur einschalten wenn es vom Support verlangt wird, es verändert die Leistungsfähigkeit der App wenn es ohne Grund eingeschaltet ist. Bitte ausschalten wenn alle nötigen Daten gesammelt sind.";
+"pref_preview_name"= "Enable Camera Preview";

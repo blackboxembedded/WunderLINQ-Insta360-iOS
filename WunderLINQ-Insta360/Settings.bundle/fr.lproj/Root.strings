@@ -17,3 +17,4 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "debug_settings_title" = "Réglages Debug";
 "pref_debuglogging_name" = "Activer les journaux debug";
 "pref_debuglogging_summary" = "Activer uniquement lorsque demandé par le support. Peut nuire aux performance. Désactiver après usage.";
+"pref_preview_name"= "Enable Camera Preview";
