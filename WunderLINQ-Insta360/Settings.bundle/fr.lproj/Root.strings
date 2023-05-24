@@ -12,9 +12,9 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
-"pref_highlightColor_title" = "Highlight Color";
+"pref_highlightColor_title" = "Couleur de surbrillance";
 "ui_title" = "Interface utilisateur";
 "debug_settings_title" = "Réglages Debug";
 "pref_debuglogging_name" = "Activer les journaux debug";
 "pref_debuglogging_summary" = "Activer uniquement lorsque demandé par le support. Peut nuire aux performance. Désactiver après usage.";
-"pref_preview_name"= "Enable Camera Preview";
+"pref_preview_name" = "Enable Camera Preview";
