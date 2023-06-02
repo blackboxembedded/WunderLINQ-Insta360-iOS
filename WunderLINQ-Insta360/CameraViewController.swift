@@ -100,7 +100,9 @@ class CameraViewController: UIViewController {
         let commands = [
             UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(enterKey)),
             UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(upKey)),
+            UIKeyCommand(input: "+", modifierFlags:[], action: #selector(upKey)),
             UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(downKey)),
+            UIKeyCommand(input: "-", modifierFlags:[], action: #selector(downKey)),
             UIKeyCommand(input: UIKeyCommand.inputLeftArrow, modifierFlags:[], action: #selector(leftKey)),
             UIKeyCommand(input: UIKeyCommand.inputRightArrow, modifierFlags:[], action: #selector(rightKey)),
             UIKeyCommand(input: UIKeyCommand.inputEscape, modifierFlags:[], action: #selector(escapeKey))

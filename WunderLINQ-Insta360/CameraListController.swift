@@ -121,7 +121,9 @@ class CameraListController: UITableViewController {
         let commands = [
             UIKeyCommand(input: "\u{d}", modifierFlags:[], action: #selector(enterKey)),
             UIKeyCommand(input: UIKeyCommand.inputUpArrow, modifierFlags:[], action: #selector(upKey)),
+            UIKeyCommand(input: "+", modifierFlags:[], action: #selector(upKey)),
             UIKeyCommand(input: UIKeyCommand.inputDownArrow, modifierFlags:[], action: #selector(downKey)),
+            UIKeyCommand(input: "-", modifierFlags:[], action: #selector(downKey)),
             UIKeyCommand(input: UIKeyCommand.inputEscape, modifierFlags:[], action: #selector(escapeKey))
         ]
         if #available(iOS 15, *) {
