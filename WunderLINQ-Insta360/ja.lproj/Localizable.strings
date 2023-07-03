@@ -19,12 +19,13 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 "task_title_stop_record" = "動画撮影を停止する";
 "task_title_start_timelapse" = "Start Timelapse Recording";
 "task_title_stop_timelapse" = "Stop Timelapse Recording";
-"pref_highlightColor_title" = "Highlight Color";
+"pref_highlightColor_title" = "カラーハイライト";
 "appsettings_label" = "APP設定";
 "about_title" = "アバウト";
 "version_label" = "バージョン：";
 "btn_sendlogs_title" = "ログの送信";
 "sendlogs_body" = "以下に問題点を記述して下さい:\n";
 "sendlogs_intent_title" = "ログを送る・・・";
-"about_label" = "およそ";
+"about_label" = "・・・について";
 "close_label" = "閉じる";
+"btn_documentation_title" = "ドキュメント";
