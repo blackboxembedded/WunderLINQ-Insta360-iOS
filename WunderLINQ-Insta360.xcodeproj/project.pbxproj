@@ -36,8 +36,9 @@
 		7EA435D129959D8D00B6AC4E /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435C529959D8C00B6AC4E /* ColorPickerViewController.swift */; };
 		7EA435D229959D8D00B6AC4E /* Peripheral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435C629959D8C00B6AC4E /* Peripheral.swift */; };
 		7EA435D72995AA1600B6AC4E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7EA435D52995AA1600B6AC4E /* Localizable.strings */; };
-		D803660D2B378E2600F48637 /* mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D803660C2B378E2600F48637 /* mp3 */; };
 		D80366112B378E4000F48637 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80366102B378E4000F48637 /* SoundManager.swift */; };
+		D80366262B3794C400F48637 /* enter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D80366242B3794C400F48637 /* enter.mp3 */; };
+		D80366272B3794C400F48637 /* directional.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D80366252B3794C400F48637 /* directional.mp3 */; };
 		D8774C3729A31BF70053DB09 /* LocalisableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8774C3529A31BF70053DB09 /* LocalisableButton.swift */; };
 		D8774C3829A31BF70053DB09 /* LocalisableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8774C3629A31BF70053DB09 /* LocalisableLabel.swift */; };
 /* End PBXBuildFile section */
@@ -122,8 +123,9 @@
 		9617646E8B76E9C847C2A333 /* Pods_WunderLINQ_Insta360.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderLINQ_Insta360.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B92AF781FA5B4683529CDA1E /* Pods-WunderLINQ-Insta360.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ-Insta360.release.xcconfig"; path = "Target Support Files/Pods-WunderLINQ-Insta360/Pods-WunderLINQ-Insta360.release.xcconfig"; sourceTree = "<group>"; };
 		C4E8D0A70C61B18AF1920B8F /* Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.debug.xcconfig"; path = "Target Support Files/Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests/Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.debug.xcconfig"; sourceTree = "<group>"; };
-		D803660C2B378E2600F48637 /* mp3 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = mp3; sourceTree = "<group>"; };
 		D80366102B378E4000F48637 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		D80366242B3794C400F48637 /* enter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enter.mp3; sourceTree = "<group>"; };
+		D80366252B3794C400F48637 /* directional.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = directional.mp3; sourceTree = "<group>"; };
 		D8380D572995D2AF00249603 /* WunderLINQ-Insta360.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "WunderLINQ-Insta360.entitlements"; sourceTree = "<group>"; };
 		D8774C3529A31BF70053DB09 /* LocalisableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalisableButton.swift; sourceTree = "<group>"; };
 		D8774C3629A31BF70053DB09 /* LocalisableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalisableLabel.swift; sourceTree = "<group>"; };
@@ -187,7 +189,7 @@
 		7EA435852995967600B6AC4E /* WunderLINQ-Insta360 */ = {
 			isa = PBXGroup;
 			children = (
-				D803660C2B378E2600F48637 /* mp3 */,
+				D803661F2B37938900F48637 /* mp3 */,
 				D80366102B378E4000F48637 /* SoundManager.swift */,
 				D8774C3529A31BF70053DB09 /* LocalisableButton.swift */,
 				D8774C3629A31BF70053DB09 /* LocalisableLabel.swift */,
@@ -256,6 +258,15 @@
 				52205B8FE3C06B22AB7DC7B9 /* Pods-WunderLINQ-Insta360Tests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		D803661F2B37938900F48637 /* mp3 */ = {
+			isa = PBXGroup;
+			children = (
+				D80366252B3794C400F48637 /* directional.mp3 */,
+				D80366242B3794C400F48637 /* enter.mp3 */,
+			);
+			path = mp3;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,12 +391,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D80366272B3794C400F48637 /* directional.mp3 in Resources */,
 				7EA435D72995AA1600B6AC4E /* Localizable.strings in Resources */,
 				7EA435CE29959D8D00B6AC4E /* Settings.bundle in Resources */,
 				7EA435932995967700B6AC4E /* LaunchScreen.storyboard in Resources */,
-				D803660D2B378E2600F48637 /* mp3 in Resources */,
 				7EA435902995967700B6AC4E /* Assets.xcassets in Resources */,
 				7EA4358E2995967600B6AC4E /* Main.storyboard in Resources */,
+				D80366262B3794C400F48637 /* enter.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
