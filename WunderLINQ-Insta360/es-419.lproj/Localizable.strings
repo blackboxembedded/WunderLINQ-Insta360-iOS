@@ -13,14 +13,25 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-"cameralist_title" = "Cameras";
+"cameralist_title" = "Cámaras";
 "task_title_photo" = "Tomar fotografía";
-"task_title_start_record" = "Iniciar grabación";
-"task_title_stop_record" = "Detener grabación";
-"task_title_start_timelapse" = "Start Timelapse Recording";
-"task_title_stop_timelapse" = "Stop Timelapse Recording";
-"pref_highlightColor_title" = "Highlight Color";
+"task_title_start_record" = "Iniciar grabación de vídeo";
+"task_title_stop_record" = "Detener la grabación de vídeo";
+"task_title_start_timelapse" = "Iniciar grabación Timelapse";
+"task_title_stop_timelapse" = "Detener grabación Timelapse";
+"pref_highlightColor_title" = "Resaltar color";
 "btn_sendlogs_title" = "Enviar registros";
 "sendlogs_intent_title" = "Enviar registros…";
 "sendlogs_body" = "Por favor describa su problema a continuación:\n";
 "close_label" = "Cerrar";
+"task_title_stop_hdr" = "Detener grabación HDR";
+"task_title_start_interval" = "Iniciar grabación por intervalos";
+"appsettings_label" = "Ajustes de la App";
+"about_label" = "Acerca de";
+"about_title" = "Acerca de";
+"version_label" = "Versión:";
+"task_title_stop_bullettime" = "Detener grabación Bullet Time";
+"task_title_start_hdr" = "Iniciar grabación HDR";
+"task_title_stop_interval" = "Detener grabación por intervalos";
+"btn_documentation_title" = "Documentación";
+"task_title_start_bullettime" = "Iniciar grabación Bullet Time";
