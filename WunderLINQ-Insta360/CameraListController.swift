@@ -14,18 +14,18 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import UIKit
-import CoreBluetooth
 import InAppSettingsKit
+import INSCameraSDK
 import Popovers
 
-class CameraListController: UITableViewController {
+class CameraListController: UITableViewController, INSBluetoothManagerDelegate  {
     
     @IBOutlet weak var cameraListTableView: UITableView!
     
-    var scanner = CentralManager()
-    private var peripheral: Peripheral?
+    var bluetoothManager = INSBluetoothManager()
+    var bluetoothDevices: [INSBluetoothDevice] = []
+    var bluetoothDevice: INSBluetoothDevice?
     
-    private let notificationCenter = NotificationCenter.default
     
     private var menuBtn: UIButton?
     
@@ -57,28 +57,19 @@ class CameraListController: UITableViewController {
         
         _ = menu /// Create the menu.
         
-        if let peripheral = peripheral {
-            NSLog("Disconnecting to \(peripheral.name)..")
-            peripheral.disconnect()
-        }
-        
         // Keep screen unlocked
         UIApplication.shared.isIdleTimerDisabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        NSLog("Scanning for Insta360 cameras..")
-        scanner.start(withServices: [CBUUID(string: "BE80")])
-        notificationCenter.addObserver(self, selector:#selector(updateDisplay), name: NSNotification.Name("CameraFound"), object: nil)
+        scanForCameras()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        notificationCenter.removeObserver(self)
-        scanner.stop()
+        bluetoothManager.stopScan()
     }
 
     // MARK: - Table view data source
@@ -88,14 +79,14 @@ class CameraListController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return scanner.peripherals.count
+        return bluetoothDevices.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CameraListViewCell", for: indexPath) as! CameraTableViewCell
         // Configure the cell
-        if (indexPath.row < scanner.peripherals.count ){
-            let labelText = scanner.peripherals[indexPath.row].name
+        if (indexPath.row < bluetoothDevices.count ){
+            let labelText = bluetoothDevices[indexPath.row].name ?? "null"
             cell.displayContent(label: labelText)
             if (itemRow == indexPath.row){
                 cell.highlightEffect()
@@ -132,6 +123,20 @@ class CameraListController: UITableViewController {
         return commands
     }
     
+    private func scanForCameras() {
+        NSLog("Scanning for Insta360 cameras..")
+        bluetoothDevices = []
+        bluetoothManager.scanCameras { (device: INSBluetoothDevice, number: NSNumber, info: [String: Any]) in
+            // Handle the scanned camera device, number, and additional info here
+            self.bluetoothDevices.append(device)
+            // For example, print the device and info
+            NSLog("Scanned device: \(device.name ?? "null")")
+            NSLog("RSSI: \(number)")
+            NSLog("Additional info: \(info)")
+            self.updateDisplay()
+        }
+    }
+    
     @objc func menuButton() {
         let appSettingsViewController = IASKAppSettingsViewController()
         self.navigationController!.pushViewController(appSettingsViewController, animated: true)
@@ -143,40 +148,39 @@ class CameraListController: UITableViewController {
     
     @objc func enterKey() {
         SoundManager().playSoundEffect("enter")
-        if (scanner.peripherals.count > 0){
+        if (bluetoothDevices.count > 0){
             let child = SpinnerViewController()
             //Add the spinner view controller
             addChild(child)
             child.view.frame = view.frame
             view.addSubview(child.view)
             child.didMove(toParent: self)
-            
-            let selected: Peripheral = scanner.peripherals[itemRow]
-            selected.connect { error in
-                //Remove the spinner view controller
+            let device = bluetoothDevices[itemRow]
+            bluetoothManager.connect(device, completion: { (err) in
                 child.willMove(toParent: nil)
                 child.view.removeFromSuperview()
                 child.removeFromParent()
-                if error != nil {
-                    NSLog("Error connecting to \(selected.name)")
-                    return
+                if (err == nil) {
+                    self.bluetoothDevice = device
+                    NSLog("Connected to \(device.name ?? "null")!")
+                    let destinationVC = CameraViewController()
+                    destinationVC.bluetoothDevice = device
+                    destinationVC.bluetoothManager = self.bluetoothManager
+                    self.performSegue(withIdentifier: "cameraListToCameraView", sender: self)
+                } else {
+                    NSLog("Error Connecting To \(device.name!)", String(describing: err))
                 }
-                NSLog("Connected to \(selected.name)!")
-                self.peripheral = selected
-                let destinationVC = CameraViewController()
-                destinationVC.peripheral = selected
-                self.performSegue(withIdentifier: "cameraListToCameraView", sender: self)
-            }
+            })
         }
     }
     
     @objc func upKey() {
         SoundManager().playSoundEffect("directional")
-        if (scanner.peripherals.count > 0){
+        if (bluetoothDevices.count > 0){
             var nextRow = 0
             if (itemRow == 0){
-                nextRow = scanner.peripherals.count - 1
-            } else if (itemRow < scanner.peripherals.count){
+                nextRow = bluetoothDevices.count - 1
+            } else if (itemRow < bluetoothDevices.count){
                 nextRow = itemRow - 1
             }
             
@@ -189,11 +193,11 @@ class CameraListController: UITableViewController {
     
     @objc func downKey() {
         SoundManager().playSoundEffect("directional")
-        if (scanner.peripherals.count > 0){
+        if (bluetoothDevices.count > 0){
             var nextRow = 0
-            if (itemRow == (scanner.peripherals.count - 1)){
+            if (itemRow == (bluetoothDevices.count - 1)){
                 nextRow = 0
-            } else if (itemRow < scanner.peripherals.count ){
+            } else if (itemRow < bluetoothDevices.count ){
                 nextRow = itemRow + 1
             }
             
@@ -219,7 +223,8 @@ class CameraListController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "cameraListToCameraView") {
             let vc = segue.destination as! CameraViewController
-            vc.peripheral = self.peripheral
+            vc.bluetoothDevice = self.bluetoothDevice
+            vc.bluetoothManager = self.bluetoothManager
         }
     }
 

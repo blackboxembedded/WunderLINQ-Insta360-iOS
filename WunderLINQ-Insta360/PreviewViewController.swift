@@ -20,7 +20,7 @@ import INSCameraSDK
 class PreviewViewController: UIViewController, INSCameraPreviewPlayerDelegate {
     @IBOutlet weak var previewView: UIView!
     
-    var peripheral: Peripheral?
+    var bluetoothDevice: INSBluetoothDevice?
     
     var child = SpinnerViewController()
     
@@ -61,6 +61,13 @@ class PreviewViewController: UIViewController, INSCameraPreviewPlayerDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        if INSCameraManager.socket().cameraState == .connected
+            || INSCameraManager.socket().cameraState == .found
+            || INSCameraManager.socket().cameraState == .synchronized {
+            NSLog("Camera is connected over wifi, shutting down...")
+            INSCameraManager.socket().shutdown()
+        }
     }
     
     override var keyCommands: [UIKeyCommand]? {
