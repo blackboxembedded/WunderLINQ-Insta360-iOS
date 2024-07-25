@@ -15,7 +15,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import Foundation
 import UIKit
-import NetworkExtension
 
 class CameraViewController: UIViewController {
 
@@ -27,7 +26,8 @@ class CameraViewController: UIViewController {
     let longShutterSpeed: [Int64] = [0, 30, 15, 60, 20];
     var longShutterSpeedIndex = 0;
     
-    var timer = Timer()
+    var wifiSSID = ""
+    var wifiPASS = ""
     
     /// A struct representing the camera's status
     struct CameraStatus {
@@ -79,20 +79,10 @@ class CameraViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateDisplay()
-        getCaptureStatus()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
-        if INSCameraManager.socket().cameraState == .connected
-            || INSCameraManager.socket().cameraState == .found
-            || INSCameraManager.socket().cameraState == .synchronized {
-            NSLog("Camera is connected over wifi, shutting down...")
-            //INSCameraManager.socket().shutdown()
-        }
-        
-        self.bluetoothManager.disconnectDevice(self.bluetoothDevice!)
     }
     
     override var keyCommands: [UIKeyCommand]? {
@@ -114,35 +104,11 @@ class CameraViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "cameraViewToPreviewView") {
-            let vc = segue.destination as! PreviewViewController
-            vc.bluetoothDevice = self.bluetoothDevice
+            let destinationVC = segue.destination as! PreviewViewController
+            destinationVC.wifiSSID = self.wifiSSID
+            destinationVC.wifiPASS = self.wifiPASS
         }
     }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-            guard let object = object as? INSCameraManager else {
-                super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
-                return
-            }
-            guard let stateValue = change?[.newKey] as? UInt, let state = INSCameraState(rawValue: stateValue) else {
-                NSLog("Invalid state value: \(change?[.newKey] ?? "nil")")
-                return
-            }
-            switch state {
-            case .found:
-                NSLog("Camera Found")
-            case .connected:
-                NSLog("Camera Connected")
-                //Open Preview
-                let destinationVC = PreviewViewController()
-                destinationVC.bluetoothDevice = self.bluetoothDevice
-                self.performSegue(withIdentifier: "cameraViewToPreviewView", sender: self)
-            case .connectFailed:
-                NSLog("Camera Connect Failed")
-            default:
-                NSLog("Camera Not connected")
-            }
-        }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
         if gesture.direction == UISwipeGestureRecognizer.Direction.right {
@@ -241,6 +207,7 @@ class CameraViewController: UIViewController {
         }
     }
     private func getWifi(){
+        NSLog("getWifi()")
         guard let peripheral = self.bluetoothDevice else { return }
         let commandManager = self.bluetoothManager.command(by: peripheral)
         let optionTypes = [
@@ -255,41 +222,15 @@ class CameraViewController: UIViewController {
                 NSLog("\((err as NSError).code)", err.localizedDescription)
             } else {
                 NSLog(options!.wifiInfo?.ssid ?? "", options!.wifiInfo?.password ?? "")
-                self.joinWiFi(with: options!.wifiInfo?.ssid ?? "", password: options!.wifiInfo?.password ?? "")
+                self.wifiSSID = options!.wifiInfo?.ssid ?? ""
+                self.wifiPASS = options!.wifiInfo?.password ?? ""
+                //Open Preview
+                let destinationVC = PreviewViewController()
+                destinationVC.wifiSSID = self.wifiSSID
+                destinationVC.wifiPASS = self.wifiPASS
+                self.performSegue(withIdentifier: "cameraViewToPreviewView", sender: self)
             }
         })
-    }
-    
-    private func joinWiFi(with SSID: String, password: String) {
-        NSLog("Joining WiFi \(SSID)...")
-        let configuration = NEHotspotConfiguration(ssid: SSID, passphrase: password, isWEP: false)
-        
-        NEHotspotConfigurationManager.shared.apply(configuration) { error in
-            guard let error = error else {
-                NSLog("Joining WiFi succeeded");
-                INSCameraManager.socket().addObserver(self, forKeyPath: "cameraState", options: .new, context: nil)
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
-                    if INSCameraManager.socket().cameraState == .connected {
-                        NSLog("Camera is already connected")
-                    } else {
-                        NSLog("Connecting to camera over wifi")
-                        INSCameraManager.socket().setup()
-                    }
-                }
-                return
-            }
-            NSLog("Joining WiFi failed: \(error)")
-            if error.localizedDescription == "already associated." {
-                NSLog("Already Associated")
-                INSCameraManager.socket().addObserver(self, forKeyPath: "cameraState", options: .new, context: nil)
-                if INSCameraManager.socket().cameraState == .connected {
-                    NSLog("Camera is already connected")
-                } else {
-                    NSLog("Connecting to camera over wifi")
-                    INSCameraManager.socket().setup()
-                }
-            }
-        }
     }
     
     @objc func enterKey() {
@@ -323,6 +264,10 @@ class CameraViewController: UIViewController {
     
     @objc func leftKey() {
         SoundManager().playSoundEffect("directional")
+        if bluetoothDevice != nil {
+            NSLog("Camera is connected over BLE, shutting down...")
+            //bluetoothManager.disconnectDevice(bluetoothDevice!)
+        }
         navigationController?.popToRootViewController(animated: true)
     }
     
