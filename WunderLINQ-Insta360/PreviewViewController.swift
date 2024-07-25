@@ -16,11 +16,13 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import Foundation
 import UIKit
 import INSCameraSDK
+import NetworkExtension
 
 class PreviewViewController: UIViewController, INSCameraPreviewPlayerDelegate {
     @IBOutlet weak var previewView: UIView!
     
-    var peripheral: Peripheral?
+    var wifiSSID: String?
+    var wifiPASS: String?
     
     var child = SpinnerViewController()
     
@@ -28,7 +30,6 @@ class PreviewViewController: UIViewController, INSCameraPreviewPlayerDelegate {
     private var previewPlayer: INSCameraPreviewPlayer?
     private var storageState: INSCameraStorageStatus?
     private var videoEncode: INSVideoEncode = .H264
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,25 +43,29 @@ class PreviewViewController: UIViewController, INSCameraPreviewPlayerDelegate {
         child.view.frame = view.frame
         
         INSCameraManager.socket().addObserver(self, forKeyPath: "cameraState", options: .new, context: nil)
-        setupRenderView()
         
         // Keep screen unlocked
         UIApplication.shared.isIdleTimerDisabled = true
+        
+        joinWiFi(with: wifiSSID ?? "", password: wifiPASS ?? "")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
-        if let currentCamera = INSCameraManager.shared().currentCamera {
-            fetchOptions {
-                self.updateConfiguration()
-                self.runMediaSession()
-            }
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        if INSCameraManager.socket().cameraState == .connected
+            || INSCameraManager.socket().cameraState == .found
+            || INSCameraManager.socket().cameraState == .synchronized {
+            NSLog("Camera is connected over wifi, shutting down...")
+            INSCameraManager.socket().shutdown()
+            INSCameraManager.shared().shutdown()
+        }
+        
+        INSCameraManager.socket().removeObserver(self, forKeyPath: "cameraState")
     }
     
     override var keyCommands: [UIKeyCommand]? {
@@ -73,6 +78,35 @@ class PreviewViewController: UIViewController, INSCameraPreviewPlayerDelegate {
         }
         return commands
     }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+            guard let object = object as? INSCameraManager else {
+                super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+                return
+            }
+            guard let stateValue = change?[.newKey] as? UInt, let state = INSCameraState(rawValue: stateValue) else {
+                NSLog("Invalid state value: \(change?[.newKey] ?? "nil")")
+                return
+            }
+            switch state {
+            case .found:
+                NSLog("Camera Found")
+            case .connected:
+                NSLog("Camera Connected")
+                if let currentCamera = INSCameraManager.shared().currentCamera {
+                    fetchOptions {
+                        self.updateConfiguration()
+                        self.runMediaSession()
+                    }
+                }
+                setupRenderView()
+                runMediaSession()
+            case .connectFailed:
+                NSLog("Camera Connect Failed")
+            default:
+                NSLog("Camera Not connected")
+            }
+        }
     
     @objc func leftKey() {
         SoundManager().playSoundEffect("directional")
@@ -96,15 +130,39 @@ class PreviewViewController: UIViewController, INSCameraPreviewPlayerDelegate {
             leftKey()
         }
     }
-    
-    deinit {
-        mediaSession.stopRunning(completion: { error in
-                print("stop media session with err: \(error?.localizedDescription ?? "")")
-            })
-        //INSCameraManager.socket().removeObserver(self, forKeyPath: "cameraState")
-        }
 
+    private func joinWiFi(with SSID: String, password: String) {
+        NSLog("Joining WiFi \(SSID)...")
+        let configuration = NEHotspotConfiguration(ssid: SSID, passphrase: password, isWEP: false)
+        
+        NEHotspotConfigurationManager.shared.apply(configuration) { error in
+            guard let error = error else {
+                NSLog("Joining WiFi succeeded");
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3) {
+                    if INSCameraManager.socket().cameraState == .connected {
+                        NSLog("Camera is already connected")
+                    } else {
+                        NSLog("Connecting to camera over wifi")
+                        INSCameraManager.socket().setup()
+                    }
+                }
+                return
+            }
+            NSLog("Joining WiFi failed: \(error)")
+            if error.localizedDescription == "already associated." {
+                NSLog("Already Associated")
+                if INSCameraManager.socket().cameraState == .connected {
+                    NSLog("Camera is already connected")
+                } else {
+                    NSLog("Connecting to camera over wifi")
+                    INSCameraManager.socket().setup()
+                }
+            }
+        }
+    }
+    
     func updateConfiguration() {
+        NSLog("updateConfiguration()");
         mediaSession.expectedVideoResolution = INSVideoResolution.init(width: 1920, height: 960, fps: 30)
         mediaSession.expectedVideoResolutionSecondary = INSVideoResolution.init(width: 960, height: 480, fps: 30)
         mediaSession.previewStreamType = .secondary
@@ -114,6 +172,7 @@ class PreviewViewController: UIViewController, INSCameraPreviewPlayerDelegate {
     }
     
     func setupRenderView() {
+        NSLog("setupRenderView()");
         let height = view.bounds.height
         let frame = CGRect(x: 0, y: view.bounds.height - height, width: view.bounds.width, height: height)
         previewPlayer = INSCameraPreviewPlayer(frame: frame, renderType: .sphericalPanoRender)
@@ -136,6 +195,7 @@ class PreviewViewController: UIViewController, INSCameraPreviewPlayerDelegate {
         }
         
         func fetchOptions(completion: (() -> Void)?) {
+            NSLog("fetchOptions()");
             weak var weakSelf = self
             let optionTypes: [NSNumber] = [NSNumber(value: INSCameraOptionsType.storageState.rawValue), NSNumber(value: INSCameraOptionsType.videoEncode.rawValue)]
             INSCameraManager.shared().commandManager.getOptionsWithTypes(optionTypes) { (error, options, successTypes) in
@@ -151,7 +211,9 @@ class PreviewViewController: UIViewController, INSCameraPreviewPlayerDelegate {
 
         
         func runMediaSession() {
+            NSLog("runMediaSession()");
             guard INSCameraManager.shared().cameraState == .connected else {
+                NSLog("runMediaSession(): Camera not connected");
                 return
             }
             if mediaSession.running {
@@ -168,21 +230,6 @@ class PreviewViewController: UIViewController, INSCameraPreviewPlayerDelegate {
                 }
             }
         }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "cameraState" {
-            if let state = change?[.newKey] as? INSCameraState {
-                switch state {
-                case .found:
-                    break
-                case .connected:
-                    runMediaSession()
-                default:
-                    mediaSession.stopRunning(completion: nil)
-                }
-            }
-        }
-    }
 
     func offset(toPlay player: INSCameraPreviewPlayer) -> String? {
         guard let mediaOffset = INSCameraManager.shared().currentCamera?.settings?.mediaOffset else { return nil }
