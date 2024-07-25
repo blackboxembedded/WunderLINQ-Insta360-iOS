@@ -266,7 +266,7 @@ class CameraViewController: UIViewController {
         SoundManager().playSoundEffect("directional")
         if bluetoothDevice != nil {
             NSLog("Camera is connected over BLE, shutting down...")
-            //bluetoothManager.disconnectDevice(bluetoothDevice!)
+            bluetoothManager.disconnectDevice(bluetoothDevice!)
         }
         navigationController?.popToRootViewController(animated: true)
     }
