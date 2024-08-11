@@ -272,8 +272,8 @@ class CameraViewController: UIViewController {
     }
     
     @objc func rightKey() {
-        SoundManager().playSoundEffect("directional")
         if UserDefaults.standard.bool(forKey: "prefEnablePreview") {
+            SoundManager().playSoundEffect("directional")
             getWifi()
         }
     }
