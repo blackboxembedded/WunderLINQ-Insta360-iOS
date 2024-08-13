@@ -19,22 +19,22 @@
 		7EA435AA2995967800B6AC4E /* WunderLINQ_Insta360UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435A92995967800B6AC4E /* WunderLINQ_Insta360UITestsLaunchTests.swift */; };
 		7EA435C829959D8D00B6AC4E /* CameraListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435BC29959D8900B6AC4E /* CameraListController.swift */; };
 		7EA435CA29959D8D00B6AC4E /* CameraTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435BE29959D8900B6AC4E /* CameraTableViewCell.swift */; };
-		7EA435CD29959D8D00B6AC4E /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435C129959D8A00B6AC4E /* PreviewViewController.swift */; };
 		7EA435CE29959D8D00B6AC4E /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7EA435C229959D8B00B6AC4E /* Settings.bundle */; };
 		7EA435CF29959D8D00B6AC4E /* SpinnerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435C329959D8B00B6AC4E /* SpinnerViewController.swift */; };
 		7EA435D029959D8D00B6AC4E /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435C429959D8C00B6AC4E /* CameraViewController.swift */; };
 		7EA435D129959D8D00B6AC4E /* ColorPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA435C529959D8C00B6AC4E /* ColorPickerViewController.swift */; };
 		7EA435D72995AA1600B6AC4E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7EA435D52995AA1600B6AC4E /* Localizable.strings */; };
+		C7ED9B00E7E4B420C1D72079 /* Pods_WunderLINQ_Insta360Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90EAA05135246285BBA012CA /* Pods_WunderLINQ_Insta360Tests.framework */; };
 		D80366112B378E4000F48637 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80366102B378E4000F48637 /* SoundManager.swift */; };
-		D80366262B3794C400F48637 /* enter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D80366242B3794C400F48637 /* enter.mp3 */; };
-		D80366272B3794C400F48637 /* directional.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D80366252B3794C400F48637 /* directional.mp3 */; };
-		D82CFEC42C4F1FE900A25F59 /* INSCoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82CFEC32C4F1FE900A25F59 /* INSCoreMedia.framework */; };
-		D82CFEC52C4F1FE900A25F59 /* INSCoreMedia.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D82CFEC32C4F1FE900A25F59 /* INSCoreMedia.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D82CFEC62C4F201E00A25F59 /* INSCoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82CFEC32C4F1FE900A25F59 /* INSCoreMedia.framework */; };
-		D82CFEC82C4F202400A25F59 /* INSCameraSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D82CFEC72C4F202400A25F59 /* INSCameraSDK.framework */; };
-		D82CFEC92C4F202400A25F59 /* INSCameraSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D82CFEC72C4F202400A25F59 /* INSCameraSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D8774C3729A31BF70053DB09 /* LocalisableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8774C3529A31BF70053DB09 /* LocalisableButton.swift */; };
 		D8774C3829A31BF70053DB09 /* LocalisableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8774C3629A31BF70053DB09 /* LocalisableLabel.swift */; };
+		D880B6042C6C08E900B4252B /* wav in Resources */ = {isa = PBXBuildFile; fileRef = D880B6032C6C08E900B4252B /* wav */; };
+		D89D44AB2C685C110097E2A8 /* INSCameraSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D89D44AA2C685C110097E2A8 /* INSCameraSDK.framework */; };
+		D89D44AC2C685C110097E2A8 /* INSCameraSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D89D44AA2C685C110097E2A8 /* INSCameraSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D89D44AF2C685C1D0097E2A8 /* INSCoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D89D44AE2C685C1D0097E2A8 /* INSCoreMedia.framework */; };
+		D89D44B02C685C1D0097E2A8 /* INSCoreMedia.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D89D44AE2C685C1D0097E2A8 /* INSCoreMedia.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D89D44B22C685F580097E2A8 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D44B12C685F580097E2A8 /* PreviewViewController.swift */; };
+		DDB3295EFCDB2B16A6183810 /* Pods_WunderLINQ_Insta360_WunderLINQ_Insta360UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31982CBADA3C5B2111FD0387 /* Pods_WunderLINQ_Insta360_WunderLINQ_Insta360UITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,14 +55,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D82CFEBF2C4F1F6C00A25F59 /* Embed Frameworks */ = {
+		D89D44AD2C685C110097E2A8 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D82CFEC52C4F1FE900A25F59 /* INSCoreMedia.framework in Embed Frameworks */,
-				D82CFEC92C4F202400A25F59 /* INSCameraSDK.framework in Embed Frameworks */,
+				D89D44AC2C685C110097E2A8 /* INSCameraSDK.framework in Embed Frameworks */,
+				D89D44B02C685C1D0097E2A8 /* INSCoreMedia.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +71,7 @@
 
 /* Begin PBXFileReference section */
 		27DF95B979746206046D2394 /* Pods-WunderLINQ-Insta360.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ-Insta360.debug.xcconfig"; path = "Target Support Files/Pods-WunderLINQ-Insta360/Pods-WunderLINQ-Insta360.debug.xcconfig"; sourceTree = "<group>"; };
+		31982CBADA3C5B2111FD0387 /* Pods_WunderLINQ_Insta360_WunderLINQ_Insta360UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderLINQ_Insta360_WunderLINQ_Insta360UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		461EA45A50CB9EA1C098AF4C /* Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.release.xcconfig"; path = "Target Support Files/Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests/Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.release.xcconfig"; sourceTree = "<group>"; };
 		52205B8FE3C06B22AB7DC7B9 /* Pods-WunderLINQ-Insta360Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ-Insta360Tests.release.xcconfig"; path = "Target Support Files/Pods-WunderLINQ-Insta360Tests/Pods-WunderLINQ-Insta360Tests.release.xcconfig"; sourceTree = "<group>"; };
 		7E21DE7029995C2F0087185C /* WunderLINQ_Insta360-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WunderLINQ_Insta360-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -89,7 +90,6 @@
 		7EA435A92995967800B6AC4E /* WunderLINQ_Insta360UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WunderLINQ_Insta360UITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7EA435BC29959D8900B6AC4E /* CameraListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraListController.swift; sourceTree = "<group>"; };
 		7EA435BE29959D8900B6AC4E /* CameraTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraTableViewCell.swift; sourceTree = "<group>"; };
-		7EA435C129959D8A00B6AC4E /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		7EA435C229959D8B00B6AC4E /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		7EA435C329959D8B00B6AC4E /* SpinnerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinnerViewController.swift; sourceTree = "<group>"; };
 		7EA435C429959D8C00B6AC4E /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
@@ -106,17 +106,18 @@
 		7EA435EB2995AB2800B6AC4E /* sl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sl; path = sl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7EA435EC2995AB2900B6AC4E /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7EA435ED2995AB2B00B6AC4E /* es-419 */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-419"; path = "es-419.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		90EAA05135246285BBA012CA /* Pods_WunderLINQ_Insta360Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderLINQ_Insta360Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9617646E8B76E9C847C2A333 /* Pods_WunderLINQ_Insta360.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WunderLINQ_Insta360.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B92AF781FA5B4683529CDA1E /* Pods-WunderLINQ-Insta360.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ-Insta360.release.xcconfig"; path = "Target Support Files/Pods-WunderLINQ-Insta360/Pods-WunderLINQ-Insta360.release.xcconfig"; sourceTree = "<group>"; };
 		C4E8D0A70C61B18AF1920B8F /* Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.debug.xcconfig"; path = "Target Support Files/Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests/Pods-WunderLINQ-Insta360-WunderLINQ-Insta360UITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D80366102B378E4000F48637 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
-		D80366242B3794C400F48637 /* enter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = enter.mp3; sourceTree = "<group>"; };
-		D80366252B3794C400F48637 /* directional.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = directional.mp3; sourceTree = "<group>"; };
-		D82CFEC32C4F1FE900A25F59 /* INSCoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = INSCoreMedia.framework; path = ../INSCameraSDK/Frameworks/INSCoreMedia.framework; sourceTree = "<group>"; };
-		D82CFEC72C4F202400A25F59 /* INSCameraSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = INSCameraSDK.framework; path = ../INSCameraSDK/Frameworks/INSCameraSDK.framework; sourceTree = "<group>"; };
 		D8380D572995D2AF00249603 /* WunderLINQ-Insta360.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "WunderLINQ-Insta360.entitlements"; sourceTree = "<group>"; };
 		D8774C3529A31BF70053DB09 /* LocalisableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalisableButton.swift; sourceTree = "<group>"; };
 		D8774C3629A31BF70053DB09 /* LocalisableLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalisableLabel.swift; sourceTree = "<group>"; };
+		D880B6032C6C08E900B4252B /* wav */ = {isa = PBXFileReference; lastKnownFileType = folder; path = wav; sourceTree = "<group>"; };
+		D89D44AA2C685C110097E2A8 /* INSCameraSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = INSCameraSDK.framework; path = "Carthage/Build/INSCameraSDK.xcframework/ios-arm64/INSCameraSDK.framework"; sourceTree = "<group>"; };
+		D89D44AE2C685C1D0097E2A8 /* INSCoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = INSCoreMedia.framework; path = Carthage/Build/iOS/INSCoreMedia.framework; sourceTree = "<group>"; };
+		D89D44B12C685F580097E2A8 /* PreviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		E50F1390B825CAC759A3D93A /* Pods-WunderLINQ-Insta360Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WunderLINQ-Insta360Tests.debug.xcconfig"; path = "Target Support Files/Pods-WunderLINQ-Insta360Tests/Pods-WunderLINQ-Insta360Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,10 +126,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D82CFEC62C4F201E00A25F59 /* INSCoreMedia.framework in Frameworks */,
-				D82CFEC42C4F1FE900A25F59 /* INSCoreMedia.framework in Frameworks */,
+				D89D44AF2C685C1D0097E2A8 /* INSCoreMedia.framework in Frameworks */,
 				145FEBE39C8525C0C333FA67 /* Pods_WunderLINQ_Insta360.framework in Frameworks */,
-				D82CFEC82C4F202400A25F59 /* INSCameraSDK.framework in Frameworks */,
+				D89D44AB2C685C110097E2A8 /* INSCameraSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +136,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7ED9B00E7E4B420C1D72079 /* Pods_WunderLINQ_Insta360Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDB3295EFCDB2B16A6183810 /* Pods_WunderLINQ_Insta360_WunderLINQ_Insta360UITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -175,7 +177,7 @@
 		7EA435852995967600B6AC4E /* WunderLINQ-Insta360 */ = {
 			isa = PBXGroup;
 			children = (
-				D803661F2B37938900F48637 /* mp3 */,
+				D880B6032C6C08E900B4252B /* wav */,
 				D80366102B378E4000F48637 /* SoundManager.swift */,
 				D8774C3529A31BF70053DB09 /* LocalisableButton.swift */,
 				D8774C3629A31BF70053DB09 /* LocalisableLabel.swift */,
@@ -185,8 +187,8 @@
 				7EA435BC29959D8900B6AC4E /* CameraListController.swift */,
 				7EA435BE29959D8900B6AC4E /* CameraTableViewCell.swift */,
 				7EA435C429959D8C00B6AC4E /* CameraViewController.swift */,
+				D89D44B12C685F580097E2A8 /* PreviewViewController.swift */,
 				7EA435C529959D8C00B6AC4E /* ColorPickerViewController.swift */,
-				7EA435C129959D8A00B6AC4E /* PreviewViewController.swift */,
 				7EA435C329959D8B00B6AC4E /* SpinnerViewController.swift */,
 				7EA435862995967600B6AC4E /* AppDelegate.swift */,
 				7EA435882995967600B6AC4E /* SceneDelegate.swift */,
@@ -219,9 +221,11 @@
 		7EA435B629959B6400B6AC4E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D82CFEC72C4F202400A25F59 /* INSCameraSDK.framework */,
-				D82CFEC32C4F1FE900A25F59 /* INSCoreMedia.framework */,
+				D89D44AE2C685C1D0097E2A8 /* INSCoreMedia.framework */,
+				D89D44AA2C685C110097E2A8 /* INSCameraSDK.framework */,
 				9617646E8B76E9C847C2A333 /* Pods_WunderLINQ_Insta360.framework */,
+				31982CBADA3C5B2111FD0387 /* Pods_WunderLINQ_Insta360_WunderLINQ_Insta360UITests.framework */,
+				90EAA05135246285BBA012CA /* Pods_WunderLINQ_Insta360Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -239,15 +243,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		D803661F2B37938900F48637 /* mp3 */ = {
-			isa = PBXGroup;
-			children = (
-				D80366252B3794C400F48637 /* directional.mp3 */,
-				D80366242B3794C400F48637 /* enter.mp3 */,
-			);
-			path = mp3;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -261,7 +256,7 @@
 				7EA435812995967600B6AC4E /* Resources */,
 				8EECAB7543C8995E65E89139 /* [CP] Embed Pods Frameworks */,
 				7E21DE9229A2853A0087185C /* Carthage Script */,
-				D82CFEBF2C4F1F6C00A25F59 /* Embed Frameworks */,
+				D89D44AD2C685C110097E2A8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -370,13 +365,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D80366272B3794C400F48637 /* directional.mp3 in Resources */,
+				D880B6042C6C08E900B4252B /* wav in Resources */,
 				7EA435D72995AA1600B6AC4E /* Localizable.strings in Resources */,
 				7EA435CE29959D8D00B6AC4E /* Settings.bundle in Resources */,
 				7EA435932995967700B6AC4E /* LaunchScreen.storyboard in Resources */,
 				7EA435902995967700B6AC4E /* Assets.xcassets in Resources */,
 				7EA4358E2995967600B6AC4E /* Main.storyboard in Resources */,
-				D80366262B3794C400F48637 /* enter.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,7 +465,6 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/INSCameraSDK.xcframework/ios-arm64/INSCameraSDK.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/INSCoreMedia.framework",
 			);
 			name = "Carthage Script";
@@ -481,7 +474,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#/opt/homebrew/bin/carthage copy-frameworks\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/opt/homebrew/bin/carthage copy-frameworks\n";
 		};
 		8EECAB7543C8995E65E89139 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -527,7 +520,6 @@
 				7EA435D129959D8D00B6AC4E /* ColorPickerViewController.swift in Sources */,
 				7EA435CF29959D8D00B6AC4E /* SpinnerViewController.swift in Sources */,
 				7EA435872995967600B6AC4E /* AppDelegate.swift in Sources */,
-				7EA435CD29959D8D00B6AC4E /* PreviewViewController.swift in Sources */,
 				7EA435D029959D8D00B6AC4E /* CameraViewController.swift in Sources */,
 				7EA435CA29959D8D00B6AC4E /* CameraTableViewCell.swift in Sources */,
 				7EA435892995967600B6AC4E /* SceneDelegate.swift in Sources */,
@@ -536,6 +528,7 @@
 				D8774C3829A31BF70053DB09 /* LocalisableLabel.swift in Sources */,
 				7EA435C829959D8D00B6AC4E /* CameraListController.swift in Sources */,
 				D80366112B378E4000F48637 /* SoundManager.swift in Sources */,
+				D89D44B22C685F580097E2A8 /* PreviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -738,7 +731,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "WunderLINQ-Insta360/WunderLINQ-Insta360.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3J48UMN5W2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -760,7 +753,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.blackboxembedded.WunderLINQ-Insta360.WunderLINQ-Insta360";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -781,7 +774,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "WunderLINQ-Insta360/WunderLINQ-Insta360.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3J48UMN5W2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -803,7 +796,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.blackboxembedded.WunderLINQ-Insta360.WunderLINQ-Insta360";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
