@@ -1,0 +1,6 @@
+framework module INSCameraSDK {
+  umbrella header "INSCameraSDK.h"
+  export *
+
+  module * { export * }
+}

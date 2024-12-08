@@ -1,0 +1,6 @@
+framework module INSCoreMedia {
+  umbrella header "INSCoreMedia.h"
+
+  export *
+  module * { export * }
+}
