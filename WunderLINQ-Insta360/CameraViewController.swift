@@ -185,7 +185,7 @@ class CameraViewController: UIViewController {
                 let commandManager = self.bluetoothManager.command(by: peripheral)
                 let options = INSTakePictureOptions.init()
                 let exposureOptions = INSCameraExposureOptions()
-                exposureOptions.program = .manual
+                exposureOptions.program = 3
                 exposureOptions.iso = 100
                 exposureOptions.shutterSpeed = CMTime(value: longShutterSpeed[longShutterSpeedIndex],
                                                       timescale: 1)

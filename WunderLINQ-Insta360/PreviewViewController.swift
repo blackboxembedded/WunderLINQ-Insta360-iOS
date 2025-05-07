@@ -163,8 +163,8 @@ class PreviewViewController: UIViewController, INSCameraPreviewPlayerDelegate {
     
     func updateConfiguration() {
         NSLog("updateConfiguration()");
-        mediaSession.expectedVideoResolution = INSVideoResolution.init(width: 1920, height: 960, fps: 30)
-        mediaSession.expectedVideoResolutionSecondary = INSVideoResolution.init(width: 960, height: 480, fps: 30)
+        mediaSession.expectedVideoResolution = INSVideoResolution.init(width: 1920, height: 960, fps: 30, type: 0)
+        mediaSession.expectedVideoResolutionSecondary = INSVideoResolution.init(width: 960, height: 480, fps: 30, type: 0)
         mediaSession.previewStreamType = .secondary
         mediaSession.expectedAudioSampleRate = .rate48000Hz
         mediaSession.videoStreamEncode = .H264
