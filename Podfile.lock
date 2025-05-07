@@ -1,24 +1,28 @@
 PODS:
   - ChromaColorPicker (2.0.2)
-  - InAppSettingsKit (3.3.6)
+  - InAppSettingsKit (3.8.5)
   - Popovers (1.3.0)
+  - SSZipArchive (2.6.0)
 
 DEPENDENCIES:
   - ChromaColorPicker (~> 2.0.2)
-  - InAppSettingsKit (~> 3.3.5)
+  - InAppSettingsKit (~> 3.8.5)
   - Popovers
+  - SSZipArchive (~> 2.6.0)
 
 SPEC REPOS:
   trunk:
     - ChromaColorPicker
     - InAppSettingsKit
     - Popovers
+    - SSZipArchive
 
 SPEC CHECKSUMS:
   ChromaColorPicker: 307585f2dc23d4d72f24cad320c1e08825cb5c09
-  InAppSettingsKit: 37df0b44132380d4c7db6fc7cded92997e29873a
+  InAppSettingsKit: 185d81410e6352aef3c328c3ba12e60c8283f91e
   Popovers: 8690b055b2c9ef433492b40e081b1a0be5859437
+  SSZipArchive: 8a6ee5677c8e304bebc109e39cf0da91ccef22ea
 
-PODFILE CHECKSUM: 3e5ab6548163a1e374ad86eb9eb84b78ba0c59eb
+PODFILE CHECKSUM: e948298301f513f80a299a5964be55fa3f49b598
 
 COCOAPODS: 1.14.3
