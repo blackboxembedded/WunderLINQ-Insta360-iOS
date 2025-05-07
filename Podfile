@@ -5,10 +5,10 @@ target 'WunderLINQ-Insta360' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   # Pods for WunderLINQ-Insta360
-  pod 'InAppSettingsKit', '~> 3.3.5'
+  pod 'InAppSettingsKit', '~> 3.8.5'
   pod 'ChromaColorPicker', '~> 2.0.2'
   pod 'Popovers'
-  pod 'SSZipArchive'
+  pod 'SSZipArchive', '~> 2.6.0'
 
   target 'WunderLINQ-Insta360Tests' do
     inherit! :search_paths
