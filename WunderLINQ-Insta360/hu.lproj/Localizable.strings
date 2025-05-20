@@ -13,7 +13,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
-"cameralist_title" = "Cameras";
+"cameralist_title" = "Insta360 Cameras";
 "task_title_photo" = "Fénykép készítése";
 "task_title_start_record" = "Videófelvétel indítása";
 "task_title_stop_record" = "Videófelvétel leállítása";
