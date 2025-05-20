@@ -7,7 +7,6 @@ target 'WunderLINQ-Insta360' do
   # Pods for WunderLINQ-Insta360
   pod 'InAppSettingsKit', '~> 3.8.5'
   pod 'ChromaColorPicker', '~> 2.0.2'
-  pod 'Popovers'
   pod 'SSZipArchive', '~> 2.6.0'
 
   target 'WunderLINQ-Insta360Tests' do

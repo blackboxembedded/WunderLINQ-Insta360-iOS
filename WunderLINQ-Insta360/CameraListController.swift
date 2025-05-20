@@ -16,7 +16,6 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import UIKit
 import InAppSettingsKit
 import INSCameraSDK
-import Popovers
 
 class CameraListController: UITableViewController, INSBluetoothManagerDelegate  {
     
@@ -30,14 +29,6 @@ class CameraListController: UITableViewController, INSBluetoothManagerDelegate  
     private var menuBtn: UIButton?
     
     var itemRow = 0
-
-    lazy var menu = Templates.UIKitMenu(sourceView: menuBtn!) {
-        Templates.MenuButton(title: NSLocalizedString("appsettings_label", comment: ""), systemImage: nil) { self.menuButton() }
-        Templates.MenuButton(title: NSLocalizedString("about_label", comment: ""), systemImage: nil) { self.aboutButton() }
-        Templates.MenuButton(title: NSLocalizedString("close_label", comment: ""), systemImage: nil) { exit(0)}
-    } fadeLabel: { [weak self] fade in
-        //self?.label.alpha = fade ? 0.5 : 1
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +46,27 @@ class CameraListController: UITableViewController, INSBluetoothManagerDelegate  
         menuButtonHeight?.isActive = true
         self.navigationItem.rightBarButtonItems = [menuButton]
         
-        _ = menu /// Create the menu.
+        // Data source: array of (title, action) tuples
+        let dataSource: [(title: String, action: () -> Void)] = [
+            (NSLocalizedString("appsettings_label", comment: ""), { self.menuButton() }),
+            (NSLocalizedString("about_label", comment: ""), { self.aboutButton() }),
+            (NSLocalizedString("close_label", comment: ""), { exit(0) }),
+        ]
+
+        // Create UIActions with unique closures
+        let menuChildren: [UIAction] = dataSource.map { item in
+            return UIAction(title: item.title) { _ in
+                item.action()
+            }
+        }
+
+        // Create menu and assign to button
+        menuBtn!.menu = UIMenu(title: "", options: .displayInline, children: menuChildren)
+        menuBtn!.showsMenuAsPrimaryAction = true
+
+        // Layout
+        menuBtn!.frame = CGRect(x: 150, y: 200, width: 160, height: 40)
+        view.addSubview(menuBtn!)
         
         // Keep screen unlocked
         UIApplication.shared.isIdleTimerDisabled = true
