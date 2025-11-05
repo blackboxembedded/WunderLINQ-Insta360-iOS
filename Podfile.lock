@@ -1,24 +1,20 @@
 PODS:
   - ChromaColorPicker (2.0.2)
-  - InAppSettingsKit (3.8.5)
   - SSZipArchive (2.6.0)
 
 DEPENDENCIES:
   - ChromaColorPicker (~> 2.0.2)
-  - InAppSettingsKit (~> 3.8.5)
   - SSZipArchive (~> 2.6.0)
 
 SPEC REPOS:
   trunk:
     - ChromaColorPicker
-    - InAppSettingsKit
     - SSZipArchive
 
 SPEC CHECKSUMS:
   ChromaColorPicker: 307585f2dc23d4d72f24cad320c1e08825cb5c09
-  InAppSettingsKit: 185d81410e6352aef3c328c3ba12e60c8283f91e
   SSZipArchive: 8a6ee5677c8e304bebc109e39cf0da91ccef22ea
 
-PODFILE CHECKSUM: 5b5a286c0337b59a2dc0a4d7eebb5352a5fa1a83
+PODFILE CHECKSUM: 5cd8141e729e43ab4826a7d976396b0c69852a76
 
 COCOAPODS: 1.14.3

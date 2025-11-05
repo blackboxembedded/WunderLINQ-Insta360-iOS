@@ -29,6 +29,7 @@
 		D8774C3729A31BF70053DB09 /* LocalisableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8774C3529A31BF70053DB09 /* LocalisableButton.swift */; };
 		D8774C3829A31BF70053DB09 /* LocalisableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8774C3629A31BF70053DB09 /* LocalisableLabel.swift */; };
 		D880B6042C6C08E900B4252B /* wav in Resources */ = {isa = PBXBuildFile; fileRef = D880B6032C6C08E900B4252B /* wav */; };
+		D88942132EBAFF760016E5BE /* InAppSettingsKit in Frameworks */ = {isa = PBXBuildFile; productRef = D88942122EBAFF760016E5BE /* InAppSettingsKit */; };
 		D89D44B22C685F580097E2A8 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D89D44B12C685F580097E2A8 /* PreviewViewController.swift */; };
 		D8D1D3B92DCAF27D00E803A2 /* INSCoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8D1D3B72DCAF27D00E803A2 /* INSCoreMedia.framework */; };
 		D8D1D3BA2DCAF27D00E803A2 /* INSCoreMedia.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D8D1D3B72DCAF27D00E803A2 /* INSCoreMedia.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -132,6 +133,7 @@
 			files = (
 				145FEBE39C8525C0C333FA67 /* Pods_WunderLINQ_Insta360.framework in Frameworks */,
 				D8D1D3BB2DCAF27D00E803A2 /* INSCameraSDK.framework in Frameworks */,
+				D88942132EBAFF760016E5BE /* InAppSettingsKit in Frameworks */,
 				D8D1D3B92DCAF27D00E803A2 /* INSCoreMedia.framework in Frameworks */,
 				D8D1D3BF2DCAF2F000E803A2 /* INSCameraServiceSDK.framework in Frameworks */,
 			);
@@ -356,6 +358,9 @@
 				"es-419",
 			);
 			mainGroup = 7EA4357A2995967600B6AC4E;
+			packageReferences = (
+				D88942112EBAFF040016E5BE /* XCRemoteSwiftPackageReference "InAppSettingsKit" */,
+			);
 			productRefGroup = 7EA435842995967600B6AC4E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -786,7 +791,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.blackboxembedded.WunderLINQ-Insta360.WunderLINQ-Insta360";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -831,7 +836,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.blackboxembedded.WunderLINQ-Insta360.WunderLINQ-Insta360";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -964,6 +969,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D88942112EBAFF040016E5BE /* XCRemoteSwiftPackageReference "InAppSettingsKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/futuretap/InAppSettingsKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.9.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D88942122EBAFF760016E5BE /* InAppSettingsKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D88942112EBAFF040016E5BE /* XCRemoteSwiftPackageReference "InAppSettingsKit" */;
+			productName = InAppSettingsKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7EA4357B2995967600B6AC4E /* Project object */;
 }

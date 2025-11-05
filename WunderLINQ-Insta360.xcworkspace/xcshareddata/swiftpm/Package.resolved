@@ -1,0 +1,15 @@
+{
+  "originHash" : "e5593a21cb00f571676dc17399f12d5b4282c4e1b0d07d34c2dfe601d1b6a2fd",
+  "pins" : [
+    {
+      "identity" : "inappsettingskit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/futuretap/InAppSettingsKit.git",
+      "state" : {
+        "revision" : "95254be2affbd72e4c165c36431b2debf6d51913",
+        "version" : "3.9.2"
+      }
+    }
+  ],
+  "version" : 3
+}
